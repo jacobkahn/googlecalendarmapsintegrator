@@ -5,6 +5,7 @@
 /*jshint sub:true*/
 /*jslint plusplus: true */
 
+// Custom sort_by function
 var sort_by = function(field, reverse, primer) {
 
    var key = primer ? 
@@ -18,8 +19,9 @@ var sort_by = function(field, reverse, primer) {
      }
 }
 
+// Sets a default (but random) date for primer comparison
 function primerFunction(string) {
-	return parseInt(string.substring(0,2));
+	return new Date("1970/01/01 " + string);
 }
 
 function full_json_event_ranker(parsed_event_list) {
@@ -27,7 +29,7 @@ function full_json_event_ranker(parsed_event_list) {
     console.log("Unsorted parsed list below:")
     console.log(parsed_event_list)
 	// Use object.sort with an scalable parameter and primer
-	parsed_event_list.sort(sort_by("start", true, primerFunction))
+  parsed_event_list.sort(sort_by("start", true, primerFunction))
 	console.log("Sorted parsed list below:")
     console.log(parsed_event_list)
 	for (var i = 0; i < parsed_event_list.length; i++) {
