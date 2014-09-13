@@ -73,7 +73,7 @@
     data-cookiepolicy="single_host_origin"
     data-requestvisibleactions="http://schema.org/AddAction"
     data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/calendar">
-  </span>
+  </span> <p id="testlala">calendarList</p>
 </span>
 				</footer>
 
@@ -126,7 +126,8 @@ Nobody's hiding from me
     //THIS IS THE STUFF THAT GETS ME MY AUTHENTICATION TOKEN
       console.log('Hi Devesh');
     gapi.auth.getToken();
-      gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET",callback: function (calendars) { console.log(calendars) } })
+     var calendarList=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET",callback: function (calendars) { } })
+     document.getElementById("testlala").innerHTML=calendarList;
       //document.location 
   } else {
     console.log('Devesh has ' + authResult['error']);
