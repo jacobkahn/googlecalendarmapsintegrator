@@ -89,6 +89,7 @@
 			
 				</div>
 			</div>
+        
 <!--
 They call me the breeze
 I keep blowing down the road
@@ -123,11 +124,12 @@ Nobody's hiding from me
         function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
     //THIS IS THE STUFF THAT GETS ME MY AUTHENTICATION TOKEN
-      console.log('YES YES YES YES YES');
+      console.log('Hi Devesh');
     gapi.auth.getToken();
-      document.location 
+      gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET",callback: function (calendars) { console.log(calendars) } })
+      //document.location 
   } else {
-    console.log('Sign-in state: ' + authResult['error']);
+    console.log('Devesh has ' + authResult['error']);
   }
 }
     </script>
