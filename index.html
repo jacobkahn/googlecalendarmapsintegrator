@@ -124,13 +124,15 @@ Nobody's hiding from me
         function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
     //THIS IS THE STUFF THAT GETS ME MY AUTHENTICATION TOKEN
-      console.log('Hi Devesh');
-    gapi.auth.getToken();
-    gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendars) { console.log(calendars) /*PUT CODE HERE, function parse calendar name */ } })
+      console.log('Devesh signed in...redirecting.');
+      gapi.auth.getToken();
+      
+      //var calendarName=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) { console.log(calendarList) /* PUT CODE HERE, function parse calendar name */ } })
+      
 
-      //document.location 
+      document.location.href="calendarmapper.html"
   } else {
-    console.log('Devesh has ' + authResult['error']);
+    console.log('Oops!' + authResult['error']);
   }
 }
     </script>
