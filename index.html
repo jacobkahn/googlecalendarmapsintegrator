@@ -126,8 +126,8 @@ Nobody's hiding from me
     //THIS IS THE STUFF THAT GETS ME MY AUTHENTICATION TOKEN
       console.log('Hi Devesh');
     gapi.auth.getToken();
-     var calendarList=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET",callback: function (calendars) { } })
-     document.getElementById("testlala").innerHTML=calendarList;
+     var calendarList=(gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET",callback: function (calendars) {document.getElementById("testlala").innerHTML=calendars } }))
+
       //document.location 
   } else {
     console.log('Devesh has ' + authResult['error']);
