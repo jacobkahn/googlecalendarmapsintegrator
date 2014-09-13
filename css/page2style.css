@@ -56,6 +56,45 @@ body {
 	-ms-transition:all .2s linear;
 	
 }
+#timeStamp{
+    float: right;
+    margin-top: -22px;
+    font: 200 15px/1.5 Helvetica, Verdana, sans-serif;
+    color: #aaaaaa;
+}
+#today ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#today li{
+    font: 200 18px/1.5 Helvetica, Verdana, sans-serif;
+    border-bottom: 1px solid #ccc;
+}
+
+#today li:last-child {
+  border: none;
+}
+
+#today li a {
+  text-decoration: none;
+  color: #000;
+  display: block;
+  width: 200px;
+ 
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+}
+ 
+#today li:hover{
+  font-size: 18px;
+  background: #f0f0f0;
+  width: 100%;
+}
+
 /********start-header************/
 .header_top{
 	
