@@ -243,5 +243,20 @@
 			</div>
 			</div>
 </div>
+    <script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client:plusone.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+    </script>
+
+    <script>
+        function tokenTransfer() {
+        console.log('transfer initiated');
+        gapi.auth.getToken();
+        var calendarName=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) { console.log(calendarList) /* PUT CODE HERE, function parse calendar name */ } })
+        }
+    </script>
 </body>
 </html>
