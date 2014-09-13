@@ -72,7 +72,7 @@
     data-clientid="84849743151-9hcdgmrt421ffiarpn9v77jcrcnp4kn9.apps.googleusercontent.com"
     data-cookiepolicy="single_host_origin"
     data-requestvisibleactions="http://schema.org/AddAction"
-    data-scope="https://www.googleapis.com/auth/plus.login">
+    data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/calendar">
   </span>
 </span>
 				</footer>
@@ -109,6 +109,8 @@ Nobody's hiding from me
 
 <solo> 
 -->
+        
+        
         <script type="text/javascript">
       (function() {
        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
@@ -119,15 +121,9 @@ Nobody's hiding from me
     <script>
         function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
-    // Update the app to reflect a signed in user
-    // Hide the sign-in button now that the user is authorized, for example:
-    console.log("Signed in");
+    //THIS IS THE STUFF THAT GETS ME MY AUTHENTICATION TOKEN
+    gapi.auth.getToken();
   } else {
-    // Update the app to reflect a signed out user
-    // Possible error values:
-    //   "user_signed_out" - User is signed-out
-    //   "access_denied" - User denied access to your app
-    //   "immediate_failed" - Could not automatically log in the user
     console.log('Sign-in state: ' + authResult['error']);
   }
 }
