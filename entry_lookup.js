@@ -5,9 +5,15 @@ calendarList = {"dictionary returned by basic calendar call to get email address
 
 function parse_calendar_name(calendarList)
 {
-	if (calendarList === )
-	json_full
+	if (calendarList.kind === "calendar#calendarList")
+	{
+	for (i = 0; i < json.length; i++)
+	{
+		calendarList."items".
+	}
 	return json_full
+	}
+	
 }
 
 
