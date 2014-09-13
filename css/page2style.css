@@ -134,6 +134,10 @@ span.trans
 {
     position: absolute;
 }
+#currentTime
+{
+    float: right;
+}
 /********end-logo*********/
 /**start-nav**/
 	.menu {
