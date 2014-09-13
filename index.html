@@ -16,6 +16,13 @@
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
+    <script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client:plusone.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+    </script>
 	<body>
 
 		<!-- Header -->
@@ -61,14 +68,20 @@
 						</div>
 					</section>
 				</div>
-				
-				
+
 				<footer class="major container small">
-					<h3>Get shady with science</h3>
-					<p>Vitae natoque dictum etiam semper magnis enim feugiat amet curabitur tempor orci penatibus. Tellus erat mauris ipsum fermentum etiam vivamus.</p>
-					<ul class="actions">
-						<li><a href="#" class="button">Join our crew</a></li>
-					</ul>
+					<h3>Get started already!</h3>
+					<p>Log in to your Google account by clicking below and get started.</p>
+					<span id="signinButton">
+  <span
+    class="g-signin"
+    data-callback="signinCallback"
+    data-clientid="CLIENT_ID"
+    data-cookiepolicy="single_host_origin"
+    data-requestvisibleactions="http://schema.org/AddAction"
+    data-scope="https://www.googleapis.com/auth/plus.login">
+  </span>
+</span>
 				</footer>
 
 			</div>
@@ -77,46 +90,8 @@
 			<div id="footer">
 				<div class="container small">
 
-					<header class="major last">
-						<h2>Questions or comments?</h2>
-					</header>
-
-					<p>Vitae natoque dictum etiam semper magnis enim feugiat amet curabitur tempor
-					orci penatibus. Tellus erat mauris ipsum fermentum etiam vivamus.</p>
-
-					<form method="post" action="#">
-						<div class="row collapse-at-2">
-							<div class="6u">
-								<input type="text" name="name" placeholder="Name" />
-							</div>
-							<div class="6u">
-								<input type="email" name="email" placeholder="Email" />
-							</div>
-						</div>
-						<div class="row">
-							<div class="12u">
-								<textarea name="message" placeholder="Message" rows="6"></textarea>
-							</div>
-						</div>
-						<div class="row">
-							<div class="12u">
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</div>
-						</div>
-					</form>
-				
-					<ul class="icons">
-						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-						<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-					</ul>
-					
 					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li>&copy; 2014 Title. All rights reserved.</li><li>Design: Us.</li>
 					</ul>
 			
 				</div>
