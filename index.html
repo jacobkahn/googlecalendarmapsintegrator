@@ -118,10 +118,12 @@ Nobody's hiding from me
        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
      })();
     </script>
+
     <script>
         function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
     //THIS IS THE STUFF THAT GETS ME MY AUTHENTICATION TOKEN
+      console.log('YES YES YES YES YES');
     gapi.auth.getToken();
       document.location 
   } else {
