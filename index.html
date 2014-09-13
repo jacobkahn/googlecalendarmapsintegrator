@@ -16,20 +16,13 @@
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
-    <script type="text/javascript">
-      (function() {
-       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-       po.src = 'https://apis.google.com/js/client:plusone.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-     })();
-    </script>
 	<body>
 
 		<!-- Header -->
 			<div id="header">
-				<h1 id="appTitle">Hi. This is Calendar Mapper</h1>
+				<h1 id="appTitle">Hello <a href="calendarmapper.html">World. </a> <br /> This is Calendar Mapper</h1>
                 <br />
-				<p>A quick and innovative solution for all your day to day planning issues.
+				<p>A quick and innovative solution for all your day to day planning issues. <br />We take your Google Calendar and visually display on a map when and where you need to be throughout your day.
 				<br /> <br />
 				This web app was developed for PennApps X by the best team in the universe. <br />I mean seriously. The best.</p>
 			</div>
@@ -71,12 +64,12 @@
 
 				<footer class="major container small">
 					<h3>Get started already!</h3>
-					<p>Log in to your Google account by clicking below and get started.</p>
+					<p>Sign in with your Google account to begin using Calendar Mapper.</p>
 					<span id="signinButton">
   <span
     class="g-signin"
     data-callback="signinCallback"
-    data-clientid="CLIENT_ID"
+    data-clientid="84849743151-9hcdgmrt421ffiarpn9v77jcrcnp4kn9.apps.googleusercontent.com"
     data-cookiepolicy="single_host_origin"
     data-requestvisibleactions="http://schema.org/AddAction"
     data-scope="https://www.googleapis.com/auth/plus.login">
@@ -96,6 +89,48 @@
 			
 				</div>
 			</div>
+<!--
+They call me the breeze
+I keep blowing down the road
+They call me the breeze
+I keep blowing down the road
 
+I ain't got me nobody
+I don't care me no more
+
+Ain't no change in the weather
+Ain't no change in me
+
+There ain't no change in the weather
+Ain't no change in me
+
+I'm not hiding from nobody
+Nobody's hiding from me
+
+<solo> 
+-->
+        <script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client:plusone.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+    </script>
+    <script>
+        function signinCallback(authResult) {
+  if (authResult['status']['signed_in']) {
+    // Update the app to reflect a signed in user
+    // Hide the sign-in button now that the user is authorized, for example:
+    console.log("Signed in");
+  } else {
+    // Update the app to reflect a signed out user
+    // Possible error values:
+    //   "user_signed_out" - User is signed-out
+    //   "access_denied" - User denied access to your app
+    //   "immediate_failed" - Could not automatically log in the user
+    console.log('Sign-in state: ' + authResult['error']);
+  }
+}
+    </script>
 	</body>
 </html>
