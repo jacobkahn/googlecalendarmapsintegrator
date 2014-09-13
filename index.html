@@ -22,7 +22,7 @@
 			<div id="header">
 				<h1 id="appTitle">Hello <a href="calendarmapper.html">World!!! </a> <br /> This is Calendar Mapper</h1>
                 <br />
-				<p>A quick and innovative solution for all your day to day planning issues. <br />We take your Google Calendar and visually display on a map when and where you need to be throughout your day.
+				<p>A quick and innovative solution for all your day to day planning issues. <br />We take your Google Calendar and visually display on a map <br /> when and where you need to be throughout your day.
 				<br /> <br />
 				This web app was developed for PennApps X by the best team in the universe. <br />I mean seriously. The best.</p>
 			</div>
@@ -118,11 +118,14 @@ Nobody's hiding from me
        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
      })();
     </script>
+
     <script>
         function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
     //THIS IS THE STUFF THAT GETS ME MY AUTHENTICATION TOKEN
+      console.log('YES YES YES YES YES');
     gapi.auth.getToken();
+      document.location 
   } else {
     console.log('Sign-in state: ' + authResult['error']);
   }
