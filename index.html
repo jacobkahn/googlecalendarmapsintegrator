@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Calendar Mapper</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-wide.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Header -->
+			<div id="header">
+				<h1 id="appTitle">Hello <a href="calendarmapper.html">World. </a> <br /> This is Calendar Mapper</h1>
+                <br />
+				<p>A quick and innovative solution for all your day to day planning issues. <br />We take your Google Calendar and visually display on a map when and where you need to be throughout your day.
+				<br /> <br />
+				This web app was developed for PennApps X by the best team in the universe. <br />I mean seriously. The best.</p>
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+			
+				<header class="major container small">
+					<h2>Calendar Mapper is the solution
+					<br />
+					to all of your calendar problems 
+					<br />
+					- and it looks amazing.</h2>
+				</header>
+				
+				<div class="box alt container">
+					<section class="feature left">
+						<a href="#" class="image icon fa-signal"><img src="images/google.png" alt="" /></a>
+						<div class="content">
+							<h3>The First Step</h3>
+							<p>Sign in to your Google account! Setting up a Google account is free, quick and highly recommended. Don't worry, we don't store any of your account information, it's all directed through Google's authentication protocols.</p>
+						</div>
+					</section>
+					<section class="feature right">
+						<a href="#" class="image icon fa-code"><img src="images/calendar.png" alt="" /></a>
+						<div class="content">
+							<h3>The Second Thing</h3>
+							<p>Don't worry about the rest. We've got it covered. We'll get your Google Calendar, intelligently pull out your events (yes, without reading or storing them) and then show exactly where you need to be, want to go or planned to exist. <br />This is the magic of code. </p>
+						</div>
+					</section>
+					<section class="feature left">
+						<a href="#" class="image icon fa-mobile"><img src="images/mobile.png" alt="" /></a>
+						<div class="content">
+							<h3>...And that's it!</h3>
+							<p>Get started using our service immediately - it just works! Don't worry about which device you're using to log in with - we can handle it all. Here's to an easier life.</p>
+						</div>
+					</section>
+				</div>
+
+				<footer class="major container small">
+					<h3>Get started already!</h3>
+					<p>Sign in with your Google account to begin using Calendar Mapper.</p>
+					<span id="signinButton">
+  <span
+    class="g-signin"
+    data-callback="signinCallback"
+    data-clientid="84849743151-9hcdgmrt421ffiarpn9v77jcrcnp4kn9.apps.googleusercontent.com"
+    data-cookiepolicy="single_host_origin"
+    data-requestvisibleactions="http://schema.org/AddAction"
+    data-scope="https://www.googleapis.com/auth/plus.login">
+  </span>
+</span>
+				</footer>
+
+			</div>
+			
+		<!-- Footer -->
+			<div id="footer">
+				<div class="container small">
+
+					<ul class="copyright">
+						<li>&copy; 2014 Calendar Mapper. All rights reserved.</li><li>Design: Us.</li>
+					</ul>
+			
+				</div>
+			</div>
+<!--
+They call me the breeze
+I keep blowing down the road
+They call me the breeze
+I keep blowing down the road
+
+I ain't got me nobody
+I don't care me no more
+
+Ain't no change in the weather
+Ain't no change in me
+
+There ain't no change in the weather
+Ain't no change in me
+
+I'm not hiding from nobody
+Nobody's hiding from me
+
+<solo> 
+-->
+        <script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client:plusone.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+    </script>
+    <script>
+        function signinCallback(authResult) {
+  if (authResult['status']['signed_in']) {
+    // Update the app to reflect a signed in user
+    // Hide the sign-in button now that the user is authorized, for example:
+    console.log("Signed in");
+  } else {
+    // Update the app to reflect a signed out user
+    // Possible error values:
+    //   "user_signed_out" - User is signed-out
+    //   "access_denied" - User denied access to your app
+    //   "immediate_failed" - Could not automatically log in the user
+    console.log('Sign-in state: ' + authResult['error']);
+  }
+}
+    </script>
+	</body>
+</html>
