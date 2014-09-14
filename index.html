@@ -171,6 +171,7 @@ Nobody's hiding from me
                 //}	
             }
             console.log(events);
+            
             return parsed_event_dict;
 }
     </script>
@@ -185,10 +186,11 @@ Nobody's hiding from me
       var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events?maxResults=15&fields=description%2Citems%2Csummary%2CtimeZone&key={AIzaSyAPlvnzo8XAvqNW1EIoFGlBSmmaKhf3dfc}";
                                                                                                                     
       var eventList=gapi.client.request({path: jsonPath, method: "GET", callback: function (events)
-{bakeCookie("devesh is funny"); parse_full_JSON_object(events); }})
+{console.log(parse_full_JSON_object(events)); }})
       }}) 
       
       setTimeout(function() {
+      //bakeCookie("devesh is funny"); 
       //document.location.href="calendarmapper.html"
       }, 600);
           
