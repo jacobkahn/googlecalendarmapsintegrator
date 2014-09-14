@@ -206,7 +206,7 @@ return maps_compatible_event_list;
     <script>
     function full_json_event_ranker(parsed_event_list)
 {
-    console.jog(parsed_event_list);   
+    console.log(parsed_event_list);   
     var sorted_event_dictionary = parsed_event_list.sort(function(a,b) { return parseFloat(a["start"]) - parseFloat(b["start"]) } );
     console.log(sorted_event_dictionary);
     var alphabet_appender = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
