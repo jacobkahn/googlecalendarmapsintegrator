@@ -214,7 +214,7 @@ return maps_compatible_event_list;
     var alphabet_appender = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
     for (i = 0; i < sorted_event_dictionary.length; i++)
 	{            
-        temp_push = [sorted_event_dictionary[i][["name"]], sorted_event_dictionary[i]["location"],sorted_event_dictionary[i]["start"], sorted_event_dictionary[i]["end"];
+        temp_push = [sorted_event_dictionary[i]["name"], sorted_event_dictionary[i]["location"],sorted_event_dictionary[i]["start"], sorted_event_dictionary[i]["end"]];
         temp_push["rank"] = sorted_event_dictionary[i];
         sorted_event_dictionary[i].push(temp_push);
         temp_push = [];
