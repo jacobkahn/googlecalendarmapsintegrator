@@ -177,7 +177,7 @@ Nobody's hiding from me
 				var start_time = start_time_pre_parse.substring(11,19);
 				var end_time = end_time_pre_parse.substring(11,19);
 				var event_location = events["items"][i]["location"];
-				parsed_event_dict1.push({key:"name", value:event_name},{key:"start", value:start_time},{key:"end",value:end_time},{key:"location",value:event_location});
+				parsed_event_dict1.push({key:"name", value:event_name},{key:"location",value:event_location},{key:"start", value:start_time},{key:"end",value:end_time});
                 parsed_event_dict2.push(parsed_event_dict1);
                 parsed_event_dict1 = [];
 			}	
@@ -186,18 +186,17 @@ Nobody's hiding from me
 	return parsed_event_dict2; }
     </script>
     <script>
-    function full_json_event_ranker(parsed_event_list)
+    function  full_json_event_ranker(parsed_event_list)
 {
-	var sorted_date_event_dictionary = parsed_event_list.sort(function(a,b) { return parseFloat(a["start"].substring(0,10)) - parseFloat(b["start"].substring(0,10)) });
-	var sorted_event_dictionary_no_rank = parsed_date_event_list.sort(function(a,b) { return parseFloat(a["start"].substring(12,20)) - parseFloat(b["start"].substring(12,20)) });
+	//var sorted_date_event_dictionary = parsed_event_list.sort(function(a,b) { return parseFloat(a["start"].substring(0,10)) - parseFloat(b["start"].substring(0,10)) });
+	//var sorted_event_dictionary_no_rank = parsed_date_event_list.sort(function(a,b) { return parseFloat(a["start"].substring(12,20)) - parseFloat(b["start"].substring(12,20)) });
 	var alphabet_appender = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-	
-	for (i = 0; i < sorted_event_dictionary_no_rank.length; i++)
+	var sorted_event_dictionary = parsed_event_list.sort(function(a,b) { return parseFloat(a["start"]) - parseFloat(b["start"]) } );
+
+	for (i = 0; i < sorted_event_dictionary.length; i++)
 	{
-		for (letter in alphabet_appender)
-		{
-			sorted_event_dictionary_no_rank[i]["rank"] = letter;
-		}
+			sorted_event_dictionary[i]["rank"] = alphabet_appender[i];
+	
 	}
 	return sorted_event_dictionary;
 }
@@ -213,7 +212,7 @@ Nobody's hiding from me
       var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events?maxResults=15&fields=description%2Citems%2Csummary%2CtimeZone&key={AIzaSyAPlvnzo8XAvqNW1EIoFGlBSmmaKhf3dfc}";
                                                                                                                     
       var eventList=gapi.client.request({path: jsonPath, method: "GET", callback: function (events)
-{bakeCookie("devesh is funny"); console.log((parse_full_JSON_object(events)));  }})
+{bakeCookie("devesh is funny"); console.log(full_json_event_ranker(parse_full_JSON_object(events)));  }})
       }}) 
       
       setTimeout(function() {
