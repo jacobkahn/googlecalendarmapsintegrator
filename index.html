@@ -211,9 +211,7 @@ return maps_compatible_event_list;
     console.log(sorted_event_dictionary);
 	for (i = 0; i < sorted_event_dictionary.length; i++)
 	{            
-            to_insert = alphabet_appender[i];
-            sorted_event_dictionary[i]["rank"] = to_insert;
-	
+            sorted_event_dictionary[i] = new myElement("rank", alphabet_appender[i]);
 	}
     console.log(sorted_event_dictionary);
 	return sorted_event_dictionary;
