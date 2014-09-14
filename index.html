@@ -163,18 +163,17 @@ Nobody's hiding from me
 	var current_day = date_now.getDate();
 	var current_year = date_now.getFullYear();
 	var current_date = current_year + "-" + current_month + "-" + current_day;
-    console.log(current_date);
 
 	for (i = 0; i < events.items.length; i++) 
 	{   
-		if (events.items[i]["kind"] == "calendar#event")
+		if (events["items"][i]["kind"] == "calendar#event")
 		{
-			if (events.items[i]["start"]["datetime"].substring(0,10) == current_date)
+			if (events["items"][i]["start"]["dateTime"].substring(0,10) == current_date)
 			{
-				var event_name = events.items[i]["summary"];
-				var start_time = events.items[i]["start"]["datetime"];
-				var end_time = events.item[i]["end"]["datetime"];
-				var event_location = events.item[i]["location"];
+				var event_name = events["items"][i]["summary"];
+				var start_time = events["items"][i]["start"]["dateTime"];
+				var end_time = events["items"][i]["end"]["dateTime"];
+				var event_location = events["items"][i]["location"];
 				parsed_event_dict.push({key:"name", value:event_name},{key:"start", value:start_time},{key:"end",value:end_time},{key:"location",value:event_location});
 			}	
 		}	
