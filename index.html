@@ -215,7 +215,7 @@ return maps_compatible_event_list;
     for (i = 0; i < sorted_event_dictionary.length; i++)
 	{            
         temp_push = [sorted_event_dictionary[i]["name"], sorted_event_dictionary[i]["location"],sorted_event_dictionary[i]["start"], sorted_event_dictionary[i]["end"]];
-        temp_push["rank"] = sorted_event_dictionary[i];
+        temp_push["rank"] = alphabet_appender[i];
         sorted_event_dictionary[i].push(temp_push);
         temp_push = [];
 	}
