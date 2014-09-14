@@ -208,7 +208,7 @@ return maps_compatible_event_list;
     var to_insert = "";
     var alphabet_appender = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 	var sorted_event_dictionary = parsed_event_list.sort(function(a,b) { return parseFloat(a["start"]) - parseFloat(b["start"]) } );
-
+    console.log(sorted_event_dictionary);
 	for (i = 0; i < sorted_event_dictionary.length; i++)
 	{            
             to_insert = alphabet_appender[i];
