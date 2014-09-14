@@ -80,6 +80,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 function initialize() 
 {
+findMyCookie();
   directionsDisplay = new google.maps.DirectionsRenderer();
   var mapOptions = 
   {
@@ -347,7 +348,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
         console.log(eventData);
         document.getElementById("map-canvas").innerHTML='<object type="text/html" data="REALLIFEMAGIC" ></object>';
         }
-        window.onload = findMyCookie;
+        window.onload = initialize;
     </script>
 </body>
 </html>
