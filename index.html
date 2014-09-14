@@ -151,10 +151,10 @@ Nobody's hiding from me
         function parse_full_JSON_object(events)
 {
 var parsed_event_dict = [];
-var current_month_false = new getMonth();
+var current_month_false = getMonth();
 var current_month = current_month_false + 1;
-var current_day = new getDate();
-var current_year = new getFullYear();
+var current_day = getDate();
+var current_year = getFullYear();
 var current_date = current_year + "-" + current_month + "-" + current_day;
 for (i = 0; i < events.length; i++) 
 {   
