@@ -121,30 +121,26 @@ Nobody's hiding from me
     </script>
     <script>
     function parse_calendar_name(calendarList)
-{
-var calendarRequestList = [];
-console.log(calendarList)
-if (calendarList.kind == "calendar#calendarList")
-{
-for (i = 0; i < (calendarList.items.length - 1); i++)
-{
-if (calendarList.items[i].id != "#contacts@group.v.calendar.google.com" || calendarList.item[i].id != "en.usa#holiday@group.v.calendar.google.com")
-{
-calendarRequestList[calendarList.length] = calendarList.items[i].id;
-
+        {
+            var calendarRequestList = [];
+            console.log(calendarList)
+            if (calendarList.kind == "calendar#calendarList")
+            {
+                for (i = 0; i < (calendarList.items.length - 1); i++)
+                {
+                    if (calendarList.items[i].id != "#contacts@group.v.calendar.google.com" || calendarList.item[i].id != "en.usa#holiday@group.v.calendar.google.com")
+                    {
+                        calendarRequestList[calendarList.length] = calendarList.items[i].id;
+                    }
+                    else {
+                        console.log("Error - invalid calendarList JSON object.");
+                        break;
+                    }
+                }
+                return calendarRequestList[0];
+                console.log(calendarRequestList[0]);
+            }
 }
-else {
-console.log("Error - invalid calendarList JSON object.");
-break;
-}
-
-}
-return calendarRequestList[0];
-console.log(calendarRequestList[0]);
-
-}
-
-}} 
     </script>
     <script>
         function signinCallback(authResult) {
