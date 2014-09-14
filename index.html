@@ -210,7 +210,8 @@ return maps_compatible_event_list;
 
 	for (i = 0; i < sorted_event_dictionary.length; i++)
 	{
-			sorted_event_dictionary[i]=({key: "rank", value: alphabet_appender[i]});
+			sorted_event_dictionary[i].key5 = "rank"
+            sorted_event_dictionary[i]["rank"] = alphabet_appender[i];
 	
 	}
     console.log(sorted_event_dictionary);
