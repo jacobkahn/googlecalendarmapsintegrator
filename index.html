@@ -158,7 +158,7 @@ Nobody's hiding from me
             var current_date = current_year + "-" + current_month + "-" + current_day;
             for (i = 0; i < events.length; i++) 
             {   
-                if (events.items[i].kind == "calendar#event")
+                if (events.items[i]["kind"] == "calendar#event")
                 {
                     if (events.items[i]["start"].substring(0,10) == current_date)
                     {
@@ -171,6 +171,7 @@ Nobody's hiding from me
                 }	
             }
             console.log(parsed_event_dict);
+            console.log([]);
             return parsed_event_dict;
 }
     </script>
