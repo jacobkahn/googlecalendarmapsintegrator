@@ -153,7 +153,7 @@ console.log((String) calendarRequestList[0]);
       console.log('Devesh signed in...redirecting.');
       gapi.auth.getToken();
       
-      var calendarName=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {parse_calendar_name(calendarList) })
+      var calendarName=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {parse_calendar_name(calendarList) }})
       
 
       //document.location.href="calendarmapper.html"
