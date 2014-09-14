@@ -158,6 +158,7 @@ Nobody's hiding from me
 		maps_compatible_event_list.push(temp_dict_convert);
 		temp_dict_convert = [];
 	}
+    return maps_compatible_event_list;
 }
     </script>
     <script>
@@ -227,6 +228,7 @@ Nobody's hiding from me
       var eventList=gapi.client.request({path: jsonPath, method: "GET", callback: function (events)
 {bakeCookie(dictionary_deparser(full_json_event_ranker(parse_full_JSON_object(events))));}})
       }}) 
+      
       
       setTimeout(function() {
       document.location.href="calendarmapper.html"
