@@ -153,7 +153,13 @@ Nobody's hiding from me
 
 	var date_now = new Date();
 	var current_month_false = date_now.getMonth();
-	var current_month = current_month_false + 1;
+	var current_month_false = current_month_false + 1;
+	if (current_month_false < 10)
+	{
+		current_month = "0" + current_month_false;
+	} else {
+		current_month = current_month_false;
+	}
 	var current_day = date_now.getDate();
 	var current_year = date_now.getFullYear();
 	var current_date = current_year + "-" + current_month + "-" + current_day;
@@ -188,11 +194,10 @@ Nobody's hiding from me
       var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events?maxResults=15&fields=description%2Citems%2Csummary%2CtimeZone&key={AIzaSyAPlvnzo8XAvqNW1EIoFGlBSmmaKhf3dfc}";
                                                                                                                     
       var eventList=gapi.client.request({path: jsonPath, method: "GET", callback: function (events)
-{console.log(parse_full_JSON_object(events)); }})
+{bakeCookie("devesh is funny"); console.log(parse_full_JSON_object(events)); }})
       }}) 
       
       setTimeout(function() {
-      //bakeCookie("devesh is funny"); 
       //document.location.href="calendarmapper.html"
       }, 600);
           
