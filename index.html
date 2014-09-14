@@ -174,8 +174,8 @@ Nobody's hiding from me
 				var event_name = events["items"][i]["summary"];
 				var start_time_pre_parse = events["items"][i]["start"]["dateTime"];
 				var end_time_pre_parse = events["items"][i]["end"]["dateTime"];
-				var start_time = start_time_pre_parse.substring(12,20);
-				var end_time = end_time_pre_parse.substring(12,20);
+				var start_time = start_time_pre_parse.substring(11,19);
+				var end_time = end_time_pre_parse.substring(11,19);
 				var event_location = events["items"][i]["location"];
 				parsed_event_dict1.push({key:"name", value:event_name},{key:"start", value:start_time},{key:"end",value:end_time},{key:"location",value:event_location});
                 parsed_event_dict2.push(parsed_event_dict1);
@@ -183,7 +183,6 @@ Nobody's hiding from me
 			}	
 		}	
 	}
-	console.log(parsed_event_dict2);
 	return parsed_event_dict2; }
     </script>
     <script>
