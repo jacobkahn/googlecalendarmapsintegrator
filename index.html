@@ -130,6 +130,7 @@ Nobody's hiding from me
                     if (calendarList.items[i].id != "#contacts@group.v.calendar.google.com" || calendarList.items[i].id != "en.usa#holiday@group.v.calendar.google.com")
                     {
                         calendarRequestList.push(calendarList.items[i].id);
+                        console.log(calendarRequestList);
                     }
                     else {
                         console.log("Error - invalid calendarList JSON object.");
