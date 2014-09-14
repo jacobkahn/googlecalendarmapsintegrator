@@ -310,6 +310,10 @@ span.trans
 	color: #e8603c;
 	font-size:1.3em;
 }
+#map-canvas{
+    width: 100%;
+    height: 300px;
+}
 #refresh{
     float: left;
     color: #f3af9d;
