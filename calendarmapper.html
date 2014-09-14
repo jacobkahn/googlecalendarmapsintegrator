@@ -272,11 +272,12 @@
 }
     </script>
     <script>
+        function dayOfTheWeek() {
         var Dtime = new Date();
         var dayW = (Dtime.getDay())-1;
         var dayS = "";
         if (dayW=0){dayS="Sunday"}else if (dayW=1){dayS="Monday"}else if (dayW=2){dayS="Tuesday"}else if (dayW=3){dayS="Wednesday"}else if (dayW=4){dayS="Thursday"}else if (dayW=5){dayS="Friday"}else if (dayW=6){dayS="Saturday"}else{dayS=""} 
-        document.getElementById("day").innerHTML = dayS;
+        document.getElementById("day").innerHTML = dayS; }
     </script>
     <script>
         function findMyCookie() {
