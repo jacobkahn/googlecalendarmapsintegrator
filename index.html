@@ -123,6 +123,7 @@ Nobody's hiding from me
     function parse_calendar_name(calendarList)
         {
             var calendarRequestList = [];
+            var firstRequestListItem = calendarRequestList[0];
             if (calendarList.kind == "calendar#calendarList")
             {
                 for (i = 0; i < (calendarList.items.length - 1); i++)
@@ -137,7 +138,7 @@ Nobody's hiding from me
                         break;
                     }
                 }
-                return calendarRequestList[0];
+                return firstRequestListItem;
                 //console.log(calendarRequestList[0]);
             }
 }
