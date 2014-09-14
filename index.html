@@ -171,8 +171,8 @@ Nobody's hiding from me
 		{
 			if (events["items"][i]["start"]["dateTime"].substring(0,10) == current_date)
 			{
-				var event_name = events["items"][i]["summary"];
-				var start_time = events["items"][i]["start"]["dateTime"];
+				var event_name = events["items"][i]["summary"].substring(12,20);
+				var start_time = events["items"][i]["start"]["dateTime"].substring(12,20);
 				var end_time = events["items"][i]["end"]["dateTime"];
 				var event_location = events["items"][i]["location"];
 				parsed_event_dict1.push({key:"name", value:event_name},{key:"start", value:start_time},{key:"end",value:end_time},{key:"location",value:event_location});
