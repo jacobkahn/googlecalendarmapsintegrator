@@ -43,7 +43,7 @@
 						<a href="#" class="image icon fa-signal"><img src="images/google.png" alt="" /></a>
 						<div class="content">
 							<h3>The First Step</h3>
-							<p>Sign in to your Google account! Setting up a Google account is free, quick and highly recommended. Don't worry, we don't store any of your account information, it's all directed through Google's authentication protocols.</p>
+							<p>Sign in to your Google account! Setting up a Google account is free, quick and highly recommended. Don't worry, we don't store any of your account information: it's all directed through Google's authentication protocols.</p>
 						</div>
 					</section>
 					<section class="feature right">
@@ -145,11 +145,10 @@ Nobody's hiding from me
     <script>
         function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
-    //THIS IS THE STUFF THAT GETS ME MY AUTHENTICATION TOKEN
-      console.log('Devesh signed in...redirecting.');
+      console.log('User signed in...redirecting.');
       gapi.auth.getToken();
       
-      var calendarName=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {
+      var calendarName=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {    
       
       var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events?maxResults=15&fields=description%2Citems%2Csummary%2CtimeZone&key={AIzaSyAPlvnzo8XAvqNW1EIoFGlBSmmaKhf3dfc}";
                                                                                                                     
