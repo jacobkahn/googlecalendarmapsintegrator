@@ -226,12 +226,12 @@ return maps_compatible_event_list;
       var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events?maxResults=15&fields=description%2Citems%2Csummary%2CtimeZone&key={AIzaSyAPlvnzo8XAvqNW1EIoFGlBSmmaKhf3dfc}";
                                                                                                                     
       var eventList=gapi.client.request({path: jsonPath, method: "GET", callback: function (events)
-{console.log(dictionary_deparser(full_json_event_ranker(parse_full_JSON_object(events))));}})
+{bakeCookie(dictionary_deparser(full_json_event_ranker(parse_full_JSON_object(events))));}})
       }}) 
       
       
       setTimeout(function() {
-      //document.location.href="calendarmapper.html"
+      document.location.href="calendarmapper.html"
       }, 600);
           
   } else {
