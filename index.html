@@ -160,7 +160,7 @@ for (i = 0; i < events.length; i++)
 {   
 if (events.items[i].kind == "calendar#event")
 {
-if (events.items[i].start.substring(0,10) = current_date)
+if (events.items[i].start.substring(0,10) == current_date)
 {
 var event_name = events.items[i].summary;
 var start_time = events.items[i].start.datetime;
