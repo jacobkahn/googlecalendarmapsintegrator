@@ -205,13 +205,14 @@ return maps_compatible_event_list;
     <script>
     function  full_json_event_ranker(parsed_event_list)
 {
-	var alphabet_appender = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+    var to_insert = "";
+    var alphabet_appender = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 	var sorted_event_dictionary = parsed_event_list.sort(function(a,b) { return parseFloat(a["start"]) - parseFloat(b["start"]) } );
 
 	for (i = 0; i < sorted_event_dictionary.length; i++)
-	{
-			sorted_event_dictionary[i].key5 = "rank"
-            sorted_event_dictionary[i]["rank"] = alphabet_appender[i];
+	{            
+            to_insert = alphabet_appender[i];
+            sorted_event_dictionary[i]["rank"] = to_insert;
 	
 	}
     console.log(sorted_event_dictionary);
