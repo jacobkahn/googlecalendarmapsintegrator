@@ -120,8 +120,8 @@ Nobody's hiding from me
     </script>
     <script>
         function bakeCookie(cookie) {
-            var cTime = new Date();
-            document.cookie = "eventCookie"+ "=" + cookie + "; " + "expires=";
+            //document.cookie = "eventCookie"+ "=" + cookie + "; " + "expires=";
+            $.cookie('eventCookie', escape(cookie.join(',')), {expires:1234});
         }
     </script>
     <script>
