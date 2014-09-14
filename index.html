@@ -119,15 +119,8 @@ Nobody's hiding from me
        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
      })();
     </script>
-
     <script>
-        function signinCallback(authResult) {
-  if (authResult['status']['signed_in']) {
-    //THIS IS THE STUFF THAT GETS ME MY AUTHENTICATION TOKEN
-      console.log('Devesh signed in...redirecting.');
-      gapi.auth.getToken();
-      
-      var calendarName=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) { function parse_calendar_name(calendarList)
+    function parse_calendar_name(calendarList)
 {
 calendarRequestList = [];
 console.log(calendarList)
@@ -151,7 +144,16 @@ console.log((String) calendarRequestList[0]);
 
 }
 
-}} })
+}} 
+    </script>
+    <script>
+        function signinCallback(authResult) {
+  if (authResult['status']['signed_in']) {
+    //THIS IS THE STUFF THAT GETS ME MY AUTHENTICATION TOKEN
+      console.log('Devesh signed in...redirecting.');
+      gapi.auth.getToken();
+      
+      var calendarName=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {parse_calendar_name(calendarList) })
       
 
       //document.location.href="calendarmapper.html"
