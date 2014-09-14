@@ -152,7 +152,7 @@ Nobody's hiding from me
       var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events?maxResults=15&fields=description%2Citems%2Csummary%2CtimeZone&key={AIzaSyAPlvnzo8XAvqNW1EIoFGlBSmmaKhf3dfc}";
                                                                                                                     
       var eventList=gapi.client.request({path: jsonPath, method: "GET", callback: function (events){console.log(events) 
-                     //document.cookie = "eventCookie"+ "=" + EVENTS + "; " + "expires=";                                                           }})
+                     document.cookie = "eventCookie"+ "=" + "Devesh is funny" + "; " + "expires=";                                                           }})
       }})
       
       
