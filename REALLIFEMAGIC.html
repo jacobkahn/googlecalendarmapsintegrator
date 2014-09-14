@@ -46,6 +46,7 @@ function addMarker(map)
 function codeAddress(my_address,my_rank) 
 {
   //var latLngArray=new Array();
+    if(geocode){
   geocoder.geocode
   ( 
     { 'address': my_address }, function(results, status) 
@@ -68,7 +69,7 @@ function codeAddress(my_address,my_rank)
   }
   );
 }
-
+}
 
 function makeInfoWindowEvent(map, infowindow, marker) {
   google.maps.event.addListener(marker, 'click', function() {
@@ -134,10 +135,7 @@ function initialize()
   list_of_list[2][3]=20;
   list_of_list[2][4]='C';
   mylatlng = codeAddress(jacob_address,'D');
-  //mylatlng=[];
-  //alert(1+1);
-  //String mystring=codeAddress(jacob_address);
-  //alert(mystring);
+
   for (var i=0;i<list_of_list.length;i++)
   {
    var marker = codeAddress(list_of_list[i][1],list_of_list[i][4]);

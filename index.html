@@ -182,7 +182,7 @@ return maps_compatible_event_list;
 	var current_year = date_now.getFullYear();
 	var current_date = current_year + "-" + current_month + "-" + current_day;
 
-	for (i = 0; i < events.items.length; i++) 
+	for (i = 0; i < events["items"].length; i++) 
 	{   
 		if (events["items"][i]["kind"] == "calendar#event")
 		{
