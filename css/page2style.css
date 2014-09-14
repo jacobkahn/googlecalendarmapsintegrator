@@ -316,6 +316,13 @@ span.trans
     font-size: 1.3em;
     margin-left: 10px;
 }
+#refresh:hover {
+    color: #e8603c;
+}
+#refIcon {
+    width: 20px;
+    height: 20px;
+}
 .heading h6{
 	width: 85%;
 	height: 25px;
