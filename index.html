@@ -24,7 +24,7 @@
                 <br />
 				<p>A quick and innovative solution for all your day to day planning issues. <br />We take your Google Calendar and visually display on a map <br /> when and where you need to be throughout your day.
 				<br /> <br />
-				This web app was developed for PennApps X by the best team in the universe. <br />I mean seriously. The best.</p>
+				This web app was developed for PennApps X by the best team in the universe. <br />Seriously. The best.</p>
 			</div>
 
 		<!-- Main -->
@@ -127,7 +127,31 @@ Nobody's hiding from me
       console.log('Devesh signed in...redirecting.');
       gapi.auth.getToken();
       
-      var calendarName=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) { console.log(calendarList) /* PUT CODE HERE, function parse calendar name */ } })
+      var calendarName=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) { function parse_calendar_name(calendarList)
+{
+calendarRequestList = [];
+console.log(calendarList)
+if (calendarList.kind == "calendar#calendarList")
+{
+for (i = 0; i < (calendarList.items.length - 1); i++)
+{
+if (calendarList.items[i].id != "#contacts@group.v.calendar.google.com" || calendarList.item[i].id != "en.usa#holiday@group.v.calendar.google.com")
+{
+calendarRequestList[calendarList.length] = calendarList.items[i].id;
+
+}
+else {
+console.log("Error - invalid calendarList JSON object.");
+break;
+}
+
+}
+return (String) calendarRequestList[0];
+console.log((String) calendarRequestList[0]);
+
+}
+
+}} })
       
 
       document.location.href="calendarmapper.html"
