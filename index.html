@@ -184,6 +184,23 @@ Nobody's hiding from me
 	return parsed_event_dict2;
 }
     </script>
+    <script>
+    function full_json_event_ranker(parsed_event_list)
+{
+	var sorted_date_event_dictionary = parsed_event_list.sort(function(a,b) { return parseFloat(a["start"].substring(0,10)) - parseFloat(b["start"].substring(0,10)) });
+	var sorted_event_dictionary_no_rank = parsed_date_event_list.sort(function(a,b) { return parseFloat(a["start"].substring(12,20)) - parseFloat(b["start"].substring(12,20)) });
+	var alphabet_appender = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+	
+	for (i = 0; i < sorted_event_dictionary_no_rank.length; i++)
+	{
+		for (letter : alphabet_appender)
+		{
+			sorted_event_dictionary_no_rank[i]["rank"] = letter;
+		}
+	}
+	return sorted_event_dictionary;
+}
+    </script>
     <script type="text/javascript" language="JavaScript">
         function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
@@ -195,7 +212,7 @@ Nobody's hiding from me
       var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events?maxResults=15&fields=description%2Citems%2Csummary%2CtimeZone&key={AIzaSyAPlvnzo8XAvqNW1EIoFGlBSmmaKhf3dfc}";
                                                                                                                     
       var eventList=gapi.client.request({path: jsonPath, method: "GET", callback: function (events)
-{bakeCookie("devesh is funny"); console.log(parse_full_JSON_object(events)); }})
+{bakeCookie("devesh is funny"); console.log(full_json_event_ranker(parse_full_JSON_object(events))); }})
       }}) 
       
       setTimeout(function() {
