@@ -149,7 +149,30 @@ Nobody's hiding from me
     </script>
     <script>
         function parse_full_JSON_object (events) {
-        console.log("HELLO"); }
+            var parsed_event_dict = [];
+            var current_month_false = getMonth();
+            var current_month = current_month_false + 1;
+            var current_day = getDate();
+            var current_year = getFullYear();
+            var current_date = current_year + "-" + current_month + "-" + current_day;
+            console.log(current_date);
+            for (i = 0; i < events.items.length; i++) 
+            {   
+                if (events.items[i]["kind"] == "calendar#event")
+                {
+                    if (events.items[i]["start"].substring(0,10) == current_date)
+                    {
+                        var event_name = events.items[i].summary;
+                        var start_time = events.items[i].start.datetime;
+                        var end_time = events.item[i].end.datetime;
+                        var event_location = events.item[i].location;
+                        parsed_event_dict.push({key:"name", value:event_name},{key:"start", value:start_time},    {key:"end",value:end_time},{key:"location",value:event_location});
+                        console.log(event_name);
+                    }	
+                }	
+            }            
+            return parsed_event_dict;
+}
     </script>
     <script type="text/javascript" language="JavaScript">
         function signinCallback(authResult) {
