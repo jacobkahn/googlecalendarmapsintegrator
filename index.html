@@ -86,7 +86,6 @@
 					<ul class="copyright">
 						<li>&copy; 2014 Calendar Mapper. All rights reserved.</li><li>Design: Us.</li>
 					</ul>
-			
 				</div>
 			</div>
         
@@ -142,7 +141,7 @@ Nobody's hiding from me
             }
 }
     </script>
-    <script>
+    <script type="text/javascript" language="JavaScript">
         function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
       console.log('User signed in...redirecting.');
@@ -152,12 +151,17 @@ Nobody's hiding from me
       
       var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events?maxResults=15&fields=description%2Citems%2Csummary%2CtimeZone&key={AIzaSyAPlvnzo8XAvqNW1EIoFGlBSmmaKhf3dfc}";
                                                                                                                     
-      var eventList=gapi.client.request({path: jsonPath, method: "GET", callback: function (events) {console.log(events)}})
+      var eventList=gapi.client.request({path: jsonPath, method: "GET", callback: function (events){console.log(events) 
+                     document.cookie = "eventCookie"+ "=" + "Devesh is funny" + "; " + "expires=";                                                           }})
       }})
       
-      //document.location.href="calendarmapper.html"
+      
+      setTimeout(function() {
+      document.location.href="calendarmapper.html"
+      }, 1500);
+      
   } else {
-    console.log('Oops!' + authResult['error']);
+    console.log("Uh oh, something's wrong... " + authResult['error']);
   }
 }
     </script>

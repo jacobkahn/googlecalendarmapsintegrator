@@ -252,10 +252,36 @@
     </script>
 
     <script>
-        function tokenTransfer() {
+    function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+    </script>
+    <script>
+    function checkCookie() {
+    var user = getCookie("eventCookie");
+    if (user != "") {
+        console.log('FOUND COOKIE!');
+    } else {
+        console.log("...somebody's eaten your cookie. I can't find it.");
+    }
+}
+    </script>
+    <script>
+        function findMyCookie() {
         console.log('transfer initiated');
+        console.log('Looking for cookie...');
+        checkCookie();
+        var eventData = getCookie("eventCookie");
+        console.log(eventData);
         }
-        window.onload = tokenTransfer;
+        window.onload = findMyCookie;
     </script>
 </body>
 </html>
