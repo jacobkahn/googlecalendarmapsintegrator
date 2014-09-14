@@ -355,6 +355,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
         checkCookie();
         var eventData = getCookie("eventCookie");
         console.log(eventData);
+        document.getElementById("map-canvas").innerHTML='<object type="text/html" data="REALLIFEMAGIC" ></object>';
         }
         window.onload = findMyCookie;
     </script>
