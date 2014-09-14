@@ -120,7 +120,8 @@ Nobody's hiding from me
     </script>
     <script>
         function bakeCookie(cookie) {
-            document.cookie = "eventCookie"+ "=" + cookie + "; " + "expires=";
+            var cTime = new Date();
+            document.cookie = "eventCookie"+ "=" + cTime + "; " + "expires=";
         }
     </script>
     <script>
