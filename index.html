@@ -196,7 +196,7 @@ return maps_compatible_event_list;
 				var event_location = events["items"][i]["location"];
 				parsed_event_dict1=[{key:"name", value:event_name},{key:"location",value:event_location},{key:"start", value:start_time},{key:"end",value:end_time}];
                 parsed_event_list.push(parsed_event_dict1);
-                parsed_event_dict1 = [];
+                parsed_event_dict1.length = 0;
 			}	
 		}	
 	}
