@@ -22,10 +22,17 @@
 <!--Add fancyBox main JS and CSS files-->
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script>
 // This example displays a marker at the center of Australia.
 // When the user clicks the marker, an info window opens.
-
+    var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+var map;
+var geocoder;
+var jacob_address="University of Pennsylvania Philadelphia PA United States" 
+var start_point = new google.maps.LatLng(40,75);
+        
 function initialize() {
   var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
   var mapOptions = {
