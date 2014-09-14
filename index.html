@@ -131,7 +131,6 @@ Nobody's hiding from me
                     if (calendarList.items[i].id != "#contacts@group.v.calendar.google.com" || calendarList.items[i].id != "en.usa#holiday@group.v.calendar.google.com")
                     {
                         calendarRequestList.push(calendarList.items[i].id);
-                        console.log(calendarRequestList);
                     }
                     else {
                         console.log("Error - invalid calendarList JSON object.");
@@ -150,7 +149,7 @@ Nobody's hiding from me
       console.log('Devesh signed in...redirecting.');
       gapi.auth.getToken();
       
-      var calendarName=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {parse_calendar_name(calendarList) }})
+      var calendarName=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {console.log(parse_calendar_name(calendarList)) }})
       
       //document.location.href="calendarmapper.html"
   } else {
