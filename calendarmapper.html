@@ -17,67 +17,8 @@
 <!--start gallery-->
 	<script type="text/javascript" src="js/jquery.easing.min.js"></script>	
 	<script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
-	<script type="text/javascript">
-	$(function () {
-		
-		var filterList = {
-		
-			init: function () {
-			
-				// MixItUp plugin
-				// http://mixitup.io
-				$('#gallerylist').mixitup({
-					targetSelector: '.portfolio',
-					filterSelector: '.filter',
-					effects: ['fade'],
-					easing: 'snap',
-					// call the hover effect
-					onMixEnd: filterList.hoverEffect()
-				});				
-			
-			},
-			
-			hoverEffect: function () {
-			
-				// Simple parallax effect
-				$('#gallerylist .portfolio').hover(
-					function () {
-						$(this).find('.label').stop().animate({bottom: 0}, 200, 'easeOutQuad');
-						$(this).find('img').stop().animate({top: -30}, 500, 'easeOutQuad');				
-					},
-					function () {
-						$(this).find('.label').stop().animate({bottom: -40}, 200, 'easeInQuad');
-						$(this).find('img').stop().animate({top: 0}, 300, 'easeOutQuad');								
-					}		
-				);				
-			
-			}
-
-		};
-		
-		// Run the show!
-		filterList.init();
-		
-		
-	});	
-	</script>
 <!--Add fancyBox main JS and CSS files-->
-<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
-		<script>
-			$(document).ready(function() {
-				$('.popup-with-zoom-anim').magnificPopup({
-					type: 'inline',
-					fixedContentPos: false,
-					fixedBgPos: true,
-					overflowY: 'auto',
-					closeBtnInside: true,
-					preloader: false,
-					midClick: true,
-					removalDelay: 300,
-					mainClass: 'my-mfp-zoom-in'
-			});
-		});
-		</script>
+
 
 
 </head>
@@ -97,10 +38,10 @@
 						  <a class="toggleMenu" href="#"><img src="images/nav.png" alt= " " /></a>
 							<ul class="nav">
 								<li class="active"><a href="index.html"></a></li>
-								<li ><a href="about.html"></a></li>
-								<li><a href="blog.html"></a></li>
-								<li><a href="portfolio.html"></a></li>
-								<li><a href="contact.html"></a></li>
+								<li ><a href=""></a></li>
+								<li><a href=""></a></li>
+								<li><a href=""></a></li>
+								<li><a href=""></a></li>
 							<div class="clear"> </div>
 						    </ul>
 							<script type="text/javascript" src="js/responsive-nav.js"></script>
@@ -171,7 +112,7 @@
 		
 			<div class="heading">
 				<h2>Calendar &nbsp; Map </h2>
-                <a href="index.html" id="refresh">|&nbsp;&nbsp; Refresh</a>
+                <a href="index.html" id="refresh">|&nbsp;&nbsp; Refresh <img id="refIcon"src="images/refresh.png"></img> </a>
 					<div class="clear"> </div>                
 			</div>		
 	
@@ -212,8 +153,8 @@
 		</div>
 		<div class="fgrid">
 			<h3>contact us</h3>
-			<p>email@gmail.com <br />email@yahoo.com<br /> email@icloud.com<br /> email@upenn.edu</p>
-			<a href="#"><p>information@jetro.com</p></a>
+			<p>deveshd@seas.upenn.edu <br />jacokahn@wharton.upenn.edu<br /> nnarang@seas.upenn.edu<br /> yyue@wharton.upenn.edu</p>
+			<a href="#"><p>calendarmapper@gmail.com</p></a>
 			<h4>1, 1, 2, 3, 5, 8, 13, 21, 34, 55</h4>
 				
 		</div>
