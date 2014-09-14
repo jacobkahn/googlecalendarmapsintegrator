@@ -310,6 +310,12 @@ span.trans
 	color: #e8603c;
 	font-size:1.3em;
 }
+#refresh{
+    float: left;
+    color: #f3af9d;
+    font-size: 1.3em;
+    margin-left: 10px;
+}
 .heading h6{
 	width: 85%;
 	height: 25px;
@@ -1973,7 +1979,7 @@ width: 86%;
 	display: none;
 }
 .heading h6 {
-	width: 83%;
+
 }
 .grid-left-img i 
 {
@@ -2549,7 +2555,7 @@ width: 86%;
 .camera_thumbs {
 	display: none;
 }
-.heading h2 {
+.heading h2, .heading a{
 font-size: 1.1em;
 }
 .heading h6 {
