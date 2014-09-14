@@ -148,7 +148,7 @@ Nobody's hiding from me
 }
     </script>
     <script>
-        function parse_full_JSON_object(events)
+        function parse_full_JSON_object (events)
         {
             var parsed_event_dict = [];
             var current_month_false = getMonth();
@@ -158,20 +158,19 @@ Nobody's hiding from me
             var current_date = current_year + "-" + current_month + "-" + current_day;
             for (i = 0; i < events.items.length; i++) 
             {   
-                //if (events.items[i]["kind"] == "calendar#event")
-                //{
-                //    if (events.items[i]["start"].substring(0,10) == current_date)
-                //    {
+                if (events.items[i]["kind"] == "calendar#event")
+                {
+                    if (events.items[i]["start"].substring(0,10) == current_date)
+                    {
                         var event_name = events.items[i].summary;
                         var start_time = events.items[i].start.datetime;
                         var end_time = events.item[i].end.datetime;
                         var event_location = events.item[i].location;
                         parsed_event_dict.push({key:"name", value:event_name},{key:"start", value:start_time},    {key:"end",value:end_time},{key:"location",value:event_location});
-                //    }	
-                //}	
-            }
-            console.log(events);
-            
+                        console.log(event_name);
+                    }	
+                }	
+            }            
             return parsed_event_dict;
 }
     </script>
@@ -186,7 +185,7 @@ Nobody's hiding from me
       var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events?maxResults=15&fields=description%2Citems%2Csummary%2CtimeZone&key={AIzaSyAPlvnzo8XAvqNW1EIoFGlBSmmaKhf3dfc}";
                                                                                                                     
       var eventList=gapi.client.request({path: jsonPath, method: "GET", callback: function (events)
-{console.log(events); }})
+{console.log(parse_full_JSON_object(events)); }})
       }}) 
       
       setTimeout(function() {
