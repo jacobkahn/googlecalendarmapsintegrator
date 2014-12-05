@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Calendar Mapper</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+        <script src="js/jquery.cookie.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-wide.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Header -->
+			<div id="header">
+				<h1 id="appTitle">Hello World!<br /> This is Calendar Mapper</h1>
+                <br />
+				<p>A quick and innovative solution for all your day to day planning issues. <br />We take your Google Calendar and visually display on a map <br /> when and where you need to be throughout your day.
+				<br /> <br />
+				This web app was developed for PennApps X by the best team in the universe. <br />Seriously. The best.</p>
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+			
+				<header class="major container small">
+					<h2>Calendar Mapper is the solution
+					<br />
+					to all of your calendar problems 
+					<br />
+					- and it looks amazing.</h2>
+				</header>
+				
+				<div class="box alt container">
+					<section class="feature left">
+						<a href="#" class="image icon fa-signal"><img src="images/google.png" alt="" /></a>
+						<div class="content">
+							<h3>The First Step</h3>
+							<p>Sign in to your Google account! Setting up a Google account is free, quick and highly recommended. Don't worry, we don't store any of your account information: it's all directed through Google's authentication protocols.</p>
+						</div>
+					</section>
+					<section class="feature right">
+						<a href="#" class="image icon fa-code"><img src="images/calendar.png" alt="" /></a>
+						<div class="content">
+							<h3>The Second Thing</h3>
+							<p>Don't worry about the rest. We've got it covered. We'll get your Google Calendar, intelligently pull out your events (yes, without reading or storing them) and then show exactly where you need to be, want to go or planned to exist. <br />This is the magic of code. </p>
+						</div>
+					</section>
+					<section class="feature left">
+						<a href="#" class="image icon fa-mobile"><img src="images/mobile.png" alt="" /></a>
+						<div class="content">
+							<h3>...And that's it!</h3>
+							<p>Get started using our service immediately - it just works! Don't worry about which device you're using to log in with - we can handle it all. Here's to an easier life.</p>
+						</div>
+					</section>
+				</div>
+
+				<footer class="major container small">
+					<h3>Get started already!</h3>
+					<p>Sign in with your Google account to begin using Calendar Mapper.</p>
+					<span id="signinButton">
+  <span
+    class="g-signin"
+    data-callback="signinCallback"
+    data-clientid="84849743151-9hcdgmrt421ffiarpn9v77jcrcnp4kn9.apps.googleusercontent.com"
+    data-cookiepolicy="single_host_origin"
+    data-requestvisibleactions="http://schema.org/AddAction"
+    data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/calendar">
+  </span> <p id="testlala"></p>
+</span>
+				</footer>
+
+			</div>
+			
+		<!-- Footer -->
+			<div id="footer">
+				<div class="container small">
+
+					<ul class="copyright">
+						<li>&copy; 2014 Calendar Mapper. All rights reserved.</li><li>Design: Us.</li>
+					</ul>
+				</div>
+			</div>
+        
+<!--
+They call me the breeze
+I keep blowing down the road
+They call me the breeze
+I keep blowing down the road
+
+I ain't got me nobody
+I don't care me no more
+
+Ain't no change in the weather
+Ain't no change in me
+
+There ain't no change in the weather
+Ain't no change in me
+
+I'm not hiding from nobody
+Nobody's hiding from me
+
+<solo> 
+-->
+        
+        
+        <script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client:plusone.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+    </script>
+    <script>
+        function bakeCookie(cookie) {
+            //document.cookie = "eventCookie"+ "=" + cookie + "; " + "expires=";
+            $.cookie('eventCookie', escape(cookie.join(',')), {expires:1234});
+        }
+    </script>
+    <script>
+    function parse_calendar_name(calendarList)
+        {
+            var calendarRequestList = [];
+            if (calendarList.kind == "calendar#calendarList")
+            {
+                for (i = 0; i < (calendarList.items.length - 1); i++)
+                {
+                    if (calendarList.items[i].id != "#contacts@group.v.calendar.google.com" || calendarList.items[i].id != "en.usa#holiday@group.v.calendar.google.com")
+                    {
+                        calendarRequestList.push(calendarList.items[i].id);
+                    }
+                    else {
+                        console.log("Error - invalid calendarList JSON object.");
+                        break;
+                    }
+                }
+                var firstRequestListItem = calendarRequestList[0];
+                return firstRequestListItem;
+                //console.log(calendarRequestList[0]);
+            }
+}
+    </script>
+    <script>
+        function dictionary_deparser(sorted_event_dictionary)
+{
+	var temp_dict_convert = [];
+	var maps_compatible_event_list = [];
+	for (i = 0; i < sorted_event_dictionary.length; i++)
+	{
+		temp_dict_convert = [sorted_event_dictionary[i]["name"], sorted_event_dictionary[i]["location"],sorted_event_dictionary[i]["start"], sorted_event_dictionary[i]["end"], sorted_event_dictionary[i]["rank"]];
+        console.log(temp_dict_convert);
+		maps_compatible_event_list.push(temp_dict_convert);
+		temp_dict_convert = [];
+        console.log(maps_compatible_event_list)
+	}
+return maps_compatible_event_list;
+}
+    </script>
+    <script>
+        function parse_full_JSON_object (events) {
+            console.log(events);
+	var parsed_event_list = [];
+    var parsed_event_dict1 = [];
+
+	var date_now = new Date();
+	var current_month_false = date_now.getMonth();
+	var current_month_false = current_month_false + 1;
+	if (current_month_false < 10)
+	{
+		current_month = "0" + current_month_false;
+	} else {
+		current_month = current_month_false;
+	}
+	var current_day = date_now.getDate();
+	var current_year = date_now.getFullYear();
+	var current_date = current_year + "-" + current_month + "-" + current_day;
+
+	for (i = 0; i < events["items"].length; i++) 
+	{   
+		if (events["items"][i]["kind"] == "calendar#event")
+		{
+			if (events["items"][i]["start"]["dateTime"].substring(0,10) == current_date)
+			{
+				var event_name = events["items"][i]["summary"];
+				var start_time_pre_parse = events["items"][i]["start"]["dateTime"];
+				var end_time_pre_parse = events["items"][i]["end"]["dateTime"];
+				var start_time = start_time_pre_parse.substring(11,19);
+				var end_time = end_time_pre_parse.substring(11,19);
+				var event_location = events["items"][i]["location"];
+				parsed_event_dict1=[{key:"name", value:event_name},{key:"location",value:event_location},{key:"start", value:start_time},{key:"end",value:end_time}];
+                parsed_event_list.push(parsed_event_dict1);
+                parsed_event_dict1.length = 0;
+			}	
+		}	
+	}
+    console.log(parsed_event_list);
+	return parsed_event_list; 
+        }
+    </script>
+    <script>
+    function full_json_event_ranker(parsed_event_list)
+{
+    var temp_push = []
+    console.log(parsed_event_list);   
+    var sorted_event_dictionary = parsed_event_list.sort(function(a,b) { return parseFloat(a["start"]) - parseFloat(b["start"]) } );
+    console.log(sorted_event_dictionary);
+    var alphabet_appender = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+    for (i = 0; i < sorted_event_dictionary.length; i++)
+	{            
+        temp_push = [sorted_event_dictionary[i]["name"], sorted_event_dictionary[i]["location"],sorted_event_dictionary[i]["start"], sorted_event_dictionary[i]["end"]];
+        temp_push["rank"] = alphabet_appender[i];
+        sorted_event_dictionary[i].push(temp_push);
+        temp_push = [];
+	}
+    console.log(sorted_event_dictionary);
+	return sorted_event_dictionary;
+}
+    </script>
+    <script type="text/javascript" language="JavaScript">
+        function signinCallback(authResult) {
+  if (authResult['status']['signed_in']) {
+      console.log('User signed in...redirecting.');
+      gapi.auth.getToken();
+      
+      var calendarName=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {    
+      
+      var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events?maxResults=15&fields=description%2Citems%2Csummary%2CtimeZone&key={AIzaSyAPlvnzo8XAvqNW1EIoFGlBSmmaKhf3dfc}";
+                                                                                                                    
+      var eventList=gapi.client.request({path: jsonPath, method: "GET", callback: function (events)
+{bakeCookie(dictionary_deparser(full_json_event_ranker(parse_full_JSON_object(events))));}})
+      }}) 
+      
+      
+      setTimeout(function() {
+      //document.location.href="calendarmapper.html"
+      }, 3000);
+          
+  } else {
+    console.log("Uh oh, something's wrong... " + authResult['error']);
+  }
+}
+    </script>
+	</body>
+</html>
