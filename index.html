@@ -239,6 +239,7 @@ return maps_compatible_event_list;
 	<script>
 		function parse_full_JSON_object (events) {
 			console.log(events);
+			console.log(events['items']);
 	var parsed_event_list = [];
 	var parsed_event_dict1 = [];
 
@@ -318,15 +319,11 @@ return maps_compatible_event_list;
 	  gapi.auth.getToken();
 
 	  var calendarName = gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {    
-	  console.log(calendarList);
 	  var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events";
-
-	  /*
-	  var eventList = gapi.client.request({path: jsonPath, method: "GET", callback: function (events)
-{bakeCookie(dictionary_deparser(full_json_event_ranker(parse_full_JSON_object(events))));}})
-      */
 	  
-	  gapi.client.request({path: jsonPath, method: "GET", callback: function (events) {handleData(events);}})
+	  gapi.client.request({path: jsonPath, method: "GET", callback: function (events) {
+		  handleData(events);
+	  }})
 		  
 	  //if already logged in, smartly switch to map view
 	  toggle_visibility('initial');
