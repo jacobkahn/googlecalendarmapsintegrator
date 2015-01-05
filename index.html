@@ -3,11 +3,12 @@
 	<head>
 		<title>Calendar Mapper</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
 		<script src="js/jquery.min.js"></script>
-        <script src="js/jquery.cookie.js"></script>
+		<script src="js/jquery.cookie.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/init.js"></script>
 		<noscript>
@@ -22,7 +23,7 @@
 		<!-- Header -->
 			<div id="header">
 				<h1 id="appTitle">Hello World!<br /> This is Calendar Mapper</h1>
-                <br />
+				<br />
 				<p>A quick and innovative solution for all your day to day planning issues. <br />We take your Google Calendar and visually display on a map <br /> when and where you need to be throughout your day.
 				<br /> <br />
 				This web app was developed for PennApps X by the best team in the universe. <br />Seriously. The best.</p>
@@ -30,7 +31,7 @@
 
 		<!-- Main -->
 			<div id="main">
-			
+				<div id="initial">
 				<header class="major container small">
 					<h2>Calendar Mapper is the solution
 					<br />
@@ -38,7 +39,7 @@
 					<br />
 					- and it looks amazing.</h2>
 				</header>
-				
+
 				<div class="box alt container">
 					<section class="feature left">
 						<a href="#" class="image icon fa-signal"><img src="images/google.png" alt="" /></a>
@@ -66,109 +67,181 @@
 				<footer class="major container small">
 					<h3>Get started already!</h3>
 					<p>Sign in with your Google account to begin using Calendar Mapper.</p>
+					<p onclick="toggle_visibility('initial');">
 					<span id="signinButton">
-  <span
-    class="g-signin"
-    data-callback="signinCallback"
-    data-clientid="84849743151-9hcdgmrt421ffiarpn9v77jcrcnp4kn9.apps.googleusercontent.com"
-    data-cookiepolicy="single_host_origin"
-    data-requestvisibleactions="http://schema.org/AddAction"
-    data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/calendar">
-  </span> <p id="testlala"></p>
-</span>
+					  <span
+						class="g-signin"
+						data-callback="signinCallback"
+						data-clientid="84849743151-9hcdgmrt421ffiarpn9v77jcrcnp4kn9.apps.googleusercontent.com"
+						data-cookiepolicy="single_host_origin"
+						data-requestvisibleactions="http://schema.org/AddAction"
+						data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/calendar">
+					  </span>
+					</span>
 				</footer>
 
+				</div>
+				<div id="mapper">
+					<div id="mapper-section-head">
+						<h1 id="mapper-section-head-title"><span id="day"></span></h1>
+					</div>
+					<div class="main-con">
+						<div class="slider">
+							<div class="color"> <span class="trans"> </span></div>
+						</div>
+						<!--end slider-->
+						<!--start home-page-con-->			  					     
+						<div class="home-page-con">
+							<div class="wrap">
+								<div class="top-grids">
+									<div class="top-grid">
+										<div class="top-grid-info">
+											<h2> 12 AM - 8AM</h2>
+											<div class="clear"> </div>
+										</div>
+										<ul id="today">
+											<li><a href="">Rowing Pratice</a><span id="timeStamp">5:00AM</span></li>
+											<li><a href="">Yoga</a><span id="timeStamp">6:00AM</span></li>
+											<li><a href="">Breakfast</a><span id="timeStamp">7:00AM</span></li>
+											<li><a href="">Workshop</a><span id="timeStamp">8:30AM</span></li>
+											<li><a href="">Movie with Devesh</a><span id="timeStamp">11:00AM</span></li>
+										</ul>
+									</div>
+									<div class="top-grid">
+										<div class="top-grid-info">
+											<h2> 8 AM - 4PM</h2>
+											<div class="clear"> </div>
+										</div>
+										<ul id="today">
+											<li><a href="">Go to work</a><span id="timeStamp">12:00PM</span></li>
+											<li><a href="">Lunch</a><span id="timeStamp">1:30PM</span></li>
+											<li><a href="">Back to work</a><span id="timeStamp">2:15PM</span></li>
+											<li><a href="">Bowling with Summer</a><span id="timeStamp">3:30PM</span></li>
+						  				</ul>
+									</div>
+									<div class="top-grid">
+										<div class="top-grid-info">
+											<h2> 4 PM - 12PM</h2>
+											<div class="clear"> </div>
+										</div>
+										<ul id="today">
+											<li><a href="">Coffee with Natasha</a><span id="timeStamp">5:00PM</span></li>
+											<li><a href="">Football game on TV</a><span id="timeStamp">6:00PM</span></li>
+											<li><a href="">Dinner</a><span id="timeStamp">7:30PM</span></li>
+											<li><a href="">Go to parent's house</a><span id="timeStamp">8:00PM</span></li>
+											<li><a href="">Pool with Jacob</a><span id="timeStamp">10:00PM</span></li>
+  										</ul>
+									</div>
+									<div class="clear"> </div>
+								</div>
+								<div class="heading">
+									<h2>Calendar Map </h2>
+									<!-- href to index.html -->
+									<a id="refresh">|&nbsp;&nbsp; Refresh <img id="refIcon"src="images/refresh.png"> </a>
+									<div class="clear"> </div>
+								</div>		
+								<!--end home-page-con-->
+								<div class="main_btm">
+									<!--start-content-->
+									<div id="map-canvas">
+										<!-- map goes here  -->
+									</div>
+									<!-- container -->
+									<script type="text/javascript" src="js/fliplightbox.min.js"></script>
+									<script type="text/javascript">$('body').flipLightBox()</script>
+									<div class="clear"> </div>
+								</div>
+							</div>
+						</div>
+						<!--End-gallery-->
+					</div>
+				</div>
 			</div>
-			
+
 		<!-- Footer -->
 			<div id="footer">
 				<div class="container small">
 
 					<ul class="copyright">
-						<li>&copy; 2014 Calendar Mapper. All rights reserved.</li><li>Design: Us.</li>
+						<li>&copy; 2014 Calendar Mapper. &nbsp; All rights reserved.</li><li> Design: Devesh Dayal</li>
 					</ul>
 				</div>
 			</div>
-        
+
 <!--
-They call me the breeze
-I keep blowing down the road
-They call me the breeze
-I keep blowing down the road
 
-I ain't got me nobody
-I don't care me no more
+It's louder than words
+This thing that we do.
 
-Ain't no change in the weather
-Ain't no change in me
-
-There ain't no change in the weather
-Ain't no change in me
-
-I'm not hiding from nobody
-Nobody's hiding from me
-
-<solo> 
 -->
-        
-        
-        <script type="text/javascript">
-      (function() {
-       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-       po.src = 'https://apis.google.com/js/client:plusone.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-     })();
-    </script>
-    <script>
-        function bakeCookie(cookie) {
-            //document.cookie = "eventCookie"+ "=" + cookie + "; " + "expires=";
-            $.cookie('eventCookie', escape(cookie.join(',')), {expires:1234});
-        }
-    </script>
-    <script>
-    function parse_calendar_name(calendarList)
-        {
-            var calendarRequestList = [];
-            if (calendarList.kind == "calendar#calendarList")
-            {
-                for (i = 0; i < (calendarList.items.length - 1); i++)
-                {
-                    if (calendarList.items[i].id != "#contacts@group.v.calendar.google.com" || calendarList.items[i].id != "en.usa#holiday@group.v.calendar.google.com")
-                    {
-                        calendarRequestList.push(calendarList.items[i].id);
-                    }
-                    else {
-                        console.log("Error - invalid calendarList JSON object.");
-                        break;
-                    }
-                }
-                var firstRequestListItem = calendarRequestList[0];
-                return firstRequestListItem;
-                //console.log(calendarRequestList[0]);
-            }
-}
-    </script>
-    <script>
-        function dictionary_deparser(sorted_event_dictionary)
+	
+	<!-- Essential OAuth initialisation script -->
+	<script type="text/javascript">
+	  (function() {
+	   var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	   po.src = 'https://apis.google.com/js/client:plusone.js';
+	   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	 })();
+	</script>
+		
+	<!-- Create a storage cookie -->
+	<script>
+		function bakeCookie(cookie) {
+			//document.cookie = "eventCookie"+ "=" + cookie + "; " + "expires=";
+			$.cookie('eventCookie', escape(cookie.join(',')), {expires:1234});
+		}
+	</script>
+		
+	<!-- Parser: function; extract calendar name -->
+	<script>
+	function parse_calendar_name(calendarList)
+		{
+			var calendarRequestList = [];
+			if (calendarList.kind == "calendar#calendarList")
+			{
+				for (i = 0; i < (calendarList.items.length - 1); i++)
+				{
+					if (calendarList.items[i].id != "#contacts@group.v.calendar.google.com" || calendarList.items[i].id != "en.usa#holiday@group.v.calendar.google.com")
+					{
+						calendarRequestList.push(calendarList.items[i].id);
+					}
+					else {
+						console.log("Error - invalid calendarList JSON object.");
+						break;
+					}
+				}
+				var firstRequestListItem = calendarRequestList[0];
+				return firstRequestListItem;
+				console.log(calendarRequestList[0]);
+			}
+		}
+	</script>
+		
+	<!-- Parser: function; compiling and exporting -->
+	<script>
+		function dictionary_deparser(sorted_event_dictionary)
 {
 	var temp_dict_convert = [];
 	var maps_compatible_event_list = [];
 	for (i = 0; i < sorted_event_dictionary.length; i++)
 	{
 		temp_dict_convert = [sorted_event_dictionary[i]["name"], sorted_event_dictionary[i]["location"],sorted_event_dictionary[i]["start"], sorted_event_dictionary[i]["end"], sorted_event_dictionary[i]["rank"]];
-        console.log(temp_dict_convert);
+		console.log(temp_dict_convert);
 		maps_compatible_event_list.push(temp_dict_convert);
 		temp_dict_convert = [];
-        console.log(maps_compatible_event_list)
+		console.log(maps_compatible_event_list)
 	}
 return maps_compatible_event_list;
 }
-    </script>
-    <script>
-        function parse_full_JSON_object (events) {
-            console.log(events);
+	</script>
+		
+	<!-- Parser: function; extracting times and locations -->
+	<script>
+		function parse_full_JSON_object (events) {
+			console.log(events);
+			console.log(events['items']);
 	var parsed_event_list = [];
-    var parsed_event_dict1 = [];
+	var parsed_event_dict1 = [];
 
 	var date_now = new Date();
 	var current_month_false = date_now.getMonth();
@@ -196,57 +269,89 @@ return maps_compatible_event_list;
 				var end_time = end_time_pre_parse.substring(11,19);
 				var event_location = events["items"][i]["location"];
 				parsed_event_dict1=[{key:"name", value:event_name},{key:"location",value:event_location},{key:"start", value:start_time},{key:"end",value:end_time}];
-                parsed_event_list.push(parsed_event_dict1);
-                parsed_event_dict1.length = 0;
+				parsed_event_list.push(parsed_event_dict1);
+				parsed_event_dict1.length = 0;
 			}	
 		}	
 	}
-    console.log(parsed_event_list);
+	console.log(parsed_event_list);
 	return parsed_event_list; 
-        }
-    </script>
-    <script>
-    function full_json_event_ranker(parsed_event_list)
+		}
+	</script>
+		
+	<!-- Parser: function; ranking events -->
+	<script>
+	function full_json_event_ranker(parsed_event_list)
 {
-    var temp_push = []
-    console.log(parsed_event_list);   
-    var sorted_event_dictionary = parsed_event_list.sort(function(a,b) { return parseFloat(a["start"]) - parseFloat(b["start"]) } );
-    console.log(sorted_event_dictionary);
-    var alphabet_appender = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-    for (i = 0; i < sorted_event_dictionary.length; i++)
+	var temp_push = []
+	console.log(parsed_event_list);   
+	var sorted_event_dictionary = parsed_event_list.sort(function(a,b) { return parseFloat(a["start"]) - parseFloat(b["start"]) } );
+	console.log(sorted_event_dictionary);
+	var alphabet_appender = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+	for (i = 0; i < sorted_event_dictionary.length; i++)
 	{            
-        temp_push = [sorted_event_dictionary[i]["name"], sorted_event_dictionary[i]["location"],sorted_event_dictionary[i]["start"], sorted_event_dictionary[i]["end"]];
-        temp_push["rank"] = alphabet_appender[i];
-        sorted_event_dictionary[i].push(temp_push);
-        temp_push = [];
+		temp_push = [sorted_event_dictionary[i]["name"], sorted_event_dictionary[i]["location"],sorted_event_dictionary[i]["start"], sorted_event_dictionary[i]["end"]];
+		temp_push["rank"] = alphabet_appender[i];
+		sorted_event_dictionary[i].push(temp_push);
+		temp_push = [];
 	}
-    console.log(sorted_event_dictionary);
+	console.log(sorted_event_dictionary);
 	return sorted_event_dictionary;
 }
-    </script>
-    <script type="text/javascript" language="JavaScript">
-        function signinCallback(authResult) {
+	</script>
+		
+	<!-- Function to handle received data from token -->
+	<script type="text/javascript" language="JavaScript">
+		function handleData(events) {
+			var parsedData = parse_full_JSON_object(events);
+			var rankedData = full_json_event_ranker(parsedData);
+			var compiledDictionary = dictionary_deparser(rankedData);
+			console.log("Final output...:");
+			console.log(compiledDictionary);
+		}
+	</script>
+		
+	<!-- Script for token validation -->
+	<script type="text/javascript" language="JavaScript">
+		function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
-      console.log('User signed in...redirecting.');
-      gapi.auth.getToken();
-      
-      var calendarName=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {    
-      
-      var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events?maxResults=15&fields=description%2Citems%2Csummary%2CtimeZone&key={AIzaSyAPlvnzo8XAvqNW1EIoFGlBSmmaKhf3dfc}";
-                                                                                                                    
-      var eventList=gapi.client.request({path: jsonPath, method: "GET", callback: function (events)
-{bakeCookie(dictionary_deparser(full_json_event_ranker(parse_full_JSON_object(events))));}})
-      }}) 
-      
-      
-      setTimeout(function() {
-      //document.location.href="calendarmapper.html"
-      }, 3000);
-          
+	  console.log('User signed in...processing data.');
+	  gapi.auth.getToken();
+
+	  var calendarName = gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {    
+	  var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events";
+	  
+	  gapi.client.request({path: jsonPath, method: "GET", callback: function (events) {
+		  handleData(events);
+	  }})
+		  
+	  //if already logged in, smartly switch to map view
+	  toggle_visibility('initial');
+	  }}) 
+
   } else {
-    console.log("Uh oh, something's wrong... " + authResult['error']);
+	console.log("Uh oh, something's wrong... " + authResult['error']);
   }
 }
-    </script>
+	</script>
+		
+		<!-- Script to hide tags -->
+		<script type="text/javascript">
+			function toggle_visibility(id) {
+			   var e = document.getElementById(id);
+			   var m = document.getElementById("mapper");
+			   e.style.display = 'none';
+			   m.style.display = 'block';
+			}
+		</script>
+		
+		<!-- Script to set the current day -->
+		<script>
+			var Dtime = new Date();
+			var dayW = Dtime.getDay();
+			var dayS = "";
+			if (dayW=1){dayS="Sunday"}else if (dayW=2){dayS="Monday"}else if (dayW=3){dayS="Tuesday"}else if (dayW=4){dayS="Wednesday"}else if (dayW=5){dayS="Thursday"}else if (dayW=6){dayS="Friday"}else if (dayW=7){dayS="Saturday"}else{dayS=""} 
+			document.getElementById("day").innerHTML = dayS; 
+    	</script>
 	</body>
 </html>
