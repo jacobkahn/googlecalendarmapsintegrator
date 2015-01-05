@@ -174,20 +174,25 @@ It's louder than words
 This thing that we do.
 
 -->
-
-		<script type="text/javascript">
+	
+	<!-- Essential OAuth initialisation script -->
+	<script type="text/javascript">
 	  (function() {
 	   var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
 	   po.src = 'https://apis.google.com/js/client:plusone.js';
 	   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 	 })();
 	</script>
+		
+	<!-- Create a storage cookie -->
 	<script>
 		function bakeCookie(cookie) {
 			//document.cookie = "eventCookie"+ "=" + cookie + "; " + "expires=";
 			$.cookie('eventCookie', escape(cookie.join(',')), {expires:1234});
 		}
 	</script>
+		
+	<!-- Parser: function; extract calendar name -->
 	<script>
 	function parse_calendar_name(calendarList)
 		{
@@ -207,10 +212,12 @@ This thing that we do.
 				}
 				var firstRequestListItem = calendarRequestList[0];
 				return firstRequestListItem;
-				//console.log(calendarRequestList[0]);
+				console.log(calendarRequestList[0]);
 			}
-}
+		}
 	</script>
+		
+	<!-- Parser: function; compiling and exporting -->
 	<script>
 		function dictionary_deparser(sorted_event_dictionary)
 {
@@ -227,6 +234,8 @@ This thing that we do.
 return maps_compatible_event_list;
 }
 	</script>
+		
+	<!-- Parser: function; extracting times and locations -->
 	<script>
 		function parse_full_JSON_object (events) {
 			console.log(events);
@@ -268,6 +277,8 @@ return maps_compatible_event_list;
 	return parsed_event_list; 
 		}
 	</script>
+		
+	<!-- Parser: function; ranking events -->
 	<script>
 	function full_json_event_ranker(parsed_event_list)
 {
@@ -287,25 +298,39 @@ return maps_compatible_event_list;
 	return sorted_event_dictionary;
 }
 	</script>
+		
+	<!-- Function to handle received data from token -->
+	<script type="text/javascript" language="JavaScript">
+		function handleData(events) {
+			var parsedData = parse_full_JSON_object(events);
+			var rankedData = full_json_event_ranker(parsedData);
+			var compiledDictionary = dictionary_deparser(rankedData);
+			console.log("Final output...:");
+			console.log(compiledDictionary);
+		}
+	</script>
+		
+	<!-- Script for token validation -->
 	<script type="text/javascript" language="JavaScript">
 		function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
 	  console.log('User signed in...processing data.');
-	  toggle_visibility('initial');
 	  gapi.auth.getToken();
 
-	  var calendarName=gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {    
-
-	  var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events?maxResults=15&fields=description%2Citems%2Csummary%2CtimeZone&key={AIzaSyAPlvnzo8XAvqNW1EIoFGlBSmmaKhf3dfc}";
-
-	  var eventList=gapi.client.request({path: jsonPath, method: "GET", callback: function (events)
-{bakeCookie(dictionary_deparser(full_json_event_ranker(parse_full_JSON_object(events))));}})
-	  }}) 
+	  var calendarName = gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {    
+	  console.log(calendarList);
+	  var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events";
 
 	  /*
-	  setTimeout(function() {
-	    document.location.href="calendarmapper.html"
-	  }, 3000); */
+	  var eventList = gapi.client.request({path: jsonPath, method: "GET", callback: function (events)
+{bakeCookie(dictionary_deparser(full_json_event_ranker(parse_full_JSON_object(events))));}})
+      */
+	  
+	  gapi.client.request({path: jsonPath, method: "GET", callback: function (events) {handleData(events);}})
+		  
+	  //if already logged in, smartly switch to map view
+	  toggle_visibility('initial');
+	  }}) 
 
   } else {
 	console.log("Uh oh, something's wrong... " + authResult['error']);
