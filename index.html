@@ -184,121 +184,20 @@ This thing that we do.
 	 })();
 	</script>
 		
-	<!-- Create a storage cookie -->
-	<script>
-		function bakeCookie(cookie) {
-			//document.cookie = "eventCookie"+ "=" + cookie + "; " + "expires=";
-			$.cookie('eventCookie', escape(cookie.join(',')), {expires:1234});
-		}
-	</script>
-		
 	<!-- Parser: function; extract calendar name -->
-	<script>
-	function parse_calendar_name(calendarList)
-		{
-			var calendarRequestList = [];
-			if (calendarList.kind == "calendar#calendarList")
-			{
-				for (i = 0; i < (calendarList.items.length - 1); i++)
-				{
-					if (calendarList.items[i].id != "#contacts@group.v.calendar.google.com" || calendarList.items[i].id != "en.usa#holiday@group.v.calendar.google.com")
-					{
-						calendarRequestList.push(calendarList.items[i].id);
-					}
-					else {
-						console.log("Error - invalid calendarList JSON object.");
-						break;
-					}
-				}
-				var firstRequestListItem = calendarRequestList[0];
-				return firstRequestListItem;
-				console.log(calendarRequestList[0]);
-			}
-		}
-	</script>
+	<script src="parsers-legacy/entry_lookup.js" type="text/javascript"></script>
 		
 	<!-- Parser: function; compiling and exporting -->
-	<script>
-		function dictionary_deparser(sorted_event_dictionary)
-{
-	var temp_dict_convert = [];
-	var maps_compatible_event_list = [];
-	for (i = 0; i < sorted_event_dictionary.length; i++)
-	{
-		temp_dict_convert = [sorted_event_dictionary[i]["name"], sorted_event_dictionary[i]["location"],sorted_event_dictionary[i]["start"], sorted_event_dictionary[i]["end"], sorted_event_dictionary[i]["rank"]];
-		console.log(temp_dict_convert);
-		maps_compatible_event_list.push(temp_dict_convert);
-		temp_dict_convert = [];
-		console.log(maps_compatible_event_list)
-	}
-return maps_compatible_event_list;
-}
-	</script>
+	<script src="parsers-legacy/dictionary_deparser.js" type="text/javascript"></script>
 		
 	<!-- Parser: function; extracting times and locations -->
-	<script>
-		function parse_full_JSON_object (events) {
-			console.log(events);
-			console.log(events['items']);
-	var parsed_event_list = [];
-	var parsed_event_dict1 = [];
-
-	var date_now = new Date();
-	var current_month_false = date_now.getMonth();
-	var current_month_false = current_month_false + 1;
-	if (current_month_false < 10)
-	{
-		current_month = "0" + current_month_false;
-	} else {
-		current_month = current_month_false;
-	}
-	var current_day = date_now.getDate();
-	var current_year = date_now.getFullYear();
-	var current_date = current_year + "-" + current_month + "-" + current_day;
-
-	for (i = 0; i < events["items"].length; i++) 
-	{   
-		if (events["items"][i]["kind"] == "calendar#event")
-		{
-			if (events["items"][i]["start"]["dateTime"].substring(0,10) == current_date)
-			{
-				var event_name = events["items"][i]["summary"];
-				var start_time_pre_parse = events["items"][i]["start"]["dateTime"];
-				var end_time_pre_parse = events["items"][i]["end"]["dateTime"];
-				var start_time = start_time_pre_parse.substring(11,19);
-				var end_time = end_time_pre_parse.substring(11,19);
-				var event_location = events["items"][i]["location"];
-				parsed_event_dict1=[{key:"name", value:event_name},{key:"location",value:event_location},{key:"start", value:start_time},{key:"end",value:end_time}];
-				parsed_event_list.push(parsed_event_dict1);
-				parsed_event_dict1.length = 0;
-			}	
-		}	
-	}
-	console.log(parsed_event_list);
-	return parsed_event_list; 
-		}
-	</script>
+	<script src="parsers-legacy/full_json_parsing.js" type="text/javascript"></script>
 		
 	<!-- Parser: function; ranking events -->
-	<script>
-	function full_json_event_ranker(parsed_event_list)
-{
-	var temp_push = []
-	console.log(parsed_event_list);   
-	var sorted_event_dictionary = parsed_event_list.sort(function(a,b) { return parseFloat(a["start"]) - parseFloat(b["start"]) } );
-	console.log(sorted_event_dictionary);
-	var alphabet_appender = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-	for (i = 0; i < sorted_event_dictionary.length; i++)
-	{            
-		temp_push = [sorted_event_dictionary[i]["name"], sorted_event_dictionary[i]["location"],sorted_event_dictionary[i]["start"], sorted_event_dictionary[i]["end"]];
-		temp_push["rank"] = alphabet_appender[i];
-		sorted_event_dictionary[i].push(temp_push);
-		temp_push = [];
-	}
-	console.log(sorted_event_dictionary);
-	return sorted_event_dictionary;
-}
-	</script>
+	<script src="parsers-legacy/full_json_ranker.js" type="text/javascript"></script>
+		
+	<!-- CUSTOM DOCUMENT FUNCTIONS - DO NOT EDIT/CHANGE/LOOK AT -->
+	<script src="js/custom-functions.js" type="text/javascript"></script>
 		
 	<!-- Function to handle received data from token -->
 	<script type="text/javascript" language="JavaScript">
@@ -314,44 +213,23 @@ return maps_compatible_event_list;
 	<!-- Script for token validation -->
 	<script type="text/javascript" language="JavaScript">
 		function signinCallback(authResult) {
-  if (authResult['status']['signed_in']) {
-	  console.log('User signed in...processing data.');
-	  gapi.auth.getToken();
-
-	  var calendarName = gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {    
-	  var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events";
-	  
-	  gapi.client.request({path: jsonPath, method: "GET", callback: function (events) {
-		  handleData(events);
-	  }})
-		  
-	  //if already logged in, smartly switch to map view
-	  toggle_visibility('initial');
-	  }}) 
-
-  } else {
-	console.log("Uh oh, something's wrong... " + authResult['error']);
-  }
-}
+			if (authResult['status']['signed_in']) {
+				console.log('User signed in...processing data.');
+			    gapi.auth.getToken();
+				
+				var calendarName = gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {    
+					var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events";
+					
+					gapi.client.request({path: jsonPath, method: "GET", callback: function (events) {
+						handleData(events);
+					}})
+					//if already logged in, smartly switch to map view
+					toggle_visibility();
+				}})
+				} else {
+					console.log("Uh oh, something's wrong... " + authResult['error']);
+				}
+		}
 	</script>
-		
-		<!-- Script to hide tags -->
-		<script type="text/javascript">
-			function toggle_visibility(id) {
-			   var e = document.getElementById(id);
-			   var m = document.getElementById("mapper");
-			   e.style.display = 'none';
-			   m.style.display = 'block';
-			}
-		</script>
-		
-		<!-- Script to set the current day -->
-		<script>
-			var Dtime = new Date();
-			var dayW = Dtime.getDay();
-			var dayS = "";
-			if (dayW=1){dayS="Sunday"}else if (dayW=2){dayS="Monday"}else if (dayW=3){dayS="Tuesday"}else if (dayW=4){dayS="Wednesday"}else if (dayW=5){dayS="Thursday"}else if (dayW=6){dayS="Friday"}else if (dayW=7){dayS="Saturday"}else{dayS=""} 
-			document.getElementById("day").innerHTML = dayS; 
-    	</script>
 	</body>
 </html>
