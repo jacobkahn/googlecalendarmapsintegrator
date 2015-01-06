@@ -27,8 +27,8 @@ function parse_full_JSON_object(events)
 			var event_name = events["items"][i]["summary"];
 			var event_location = events["items"][i]["location"];
 			var event_start_date = events["items"][i]["start"]["dateTime"].substring(0,10);
-			var start_time = events["items"][i]["start"]["dateTime"].substring(11,19);
-			var end_time = events["items"][i]["end"]["dateTime"].substring(11,19);
+			var start_time = events["items"][i]["start"]["dateTime"].substring(11,16);
+			var end_time = events["items"][i]["end"]["dateTime"].substring(11,16);
 			var event_details = {};
 			
 			//TODO: IMPLEMENT SUPPORT FOR RECURRING EVENTS (not currently supported)

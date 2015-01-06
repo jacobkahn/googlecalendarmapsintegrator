@@ -15,7 +15,23 @@ function toggle_visibility() {
 }
 
 function populateTags (details) {
-	for(i=0; i < details.length; i++) {
-		console.log(details[i][3]);
+	m = 1; a = 1; e = 1;
+	for(i = 0; i < details.length; i++) {
+		var time = details[i][3];
+		var name = details[i][1];
+		var check = parseInt(time.substring(0,2));
+		if(check < 8) {
+			var tagname = "m" + m;
+			misc="AM"; m += 1;
+		}
+		else if((check >= 8) && (check < 16)) {
+			var tagname = "a" + a;
+			misc="PM"; a += 1;
+		}
+		else if(check >= 16) {
+			var tagname = "e" + e;
+			misc="PM"; e += 1;
+		}
+		document.getElementById(tagname).innerHTML = "<a href=\"\">"+name+"</a><span id=\"timeStamp\">"+time+misc+"</span>";
 	}
 }
