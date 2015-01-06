@@ -32,7 +32,7 @@ function parse_full_JSON_object(events)
 			var event_details = {};
 			
 			//TODO: IMPLEMENT SUPPORT FOR RECURRING EVENTS (not currently supported)
-			var event_repeat_info = events["items"][i]["recurrence"];
+			//EDIT: WORKAROUND IMPLEMENTED BY DEVESH YAY, NOW SUPPORTED
 
 			if (event_start_date == current_date)
 			{
