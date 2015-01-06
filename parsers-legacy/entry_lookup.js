@@ -17,7 +17,7 @@ function parse_calendar_name(calendarList)
 			}
 		}
 		var firstRequestListItem = calendarRequestList[0];
-		console.log(firstRequestListItem);
+		console.log("Calendar ID: "+firstRequestListItem);
 		return firstRequestListItem;
 	}
 	

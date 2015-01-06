@@ -170,8 +170,7 @@
 
 <!--
 
-It's louder than words
-This thing that we do.
+One ring to rule them all.
 
 -->
 	
@@ -187,14 +186,14 @@ This thing that we do.
 	<!-- Parser: function; extract calendar name -->
 	<script src="parsers-legacy/entry_lookup.js" type="text/javascript"></script>
 		
-	<!-- Parser: function; compiling and exporting -->
-	<script src="parsers-legacy/dictionary_deparser.js" type="text/javascript"></script>
-		
 	<!-- Parser: function; extracting times and locations -->
 	<script src="parsers-legacy/full_json_parsing.js" type="text/javascript"></script>
 		
 	<!-- Parser: function; ranking events -->
 	<script src="parsers-legacy/full_json_ranker.js" type="text/javascript"></script>
+		
+	<!-- Parser: function; compiling and exporting -->
+	<script src="parsers-legacy/dictionary_deparser.js" type="text/javascript"></script>
 		
 	<!-- CUSTOM DOCUMENT FUNCTIONS - DO NOT EDIT/CHANGE/LOOK AT -->
 	<script src="js/custom-functions.js" type="text/javascript"></script>
@@ -202,10 +201,16 @@ This thing that we do.
 	<!-- Function to handle received data from token -->
 	<script type="text/javascript" language="JavaScript">
 		function handleData(events) {
+			console.log("Incoming OAuth Token:");
+			console.log(events);
 			var parsedData = parse_full_JSON_object(events);
+			console.log("Parsed data:");
+			console.log(parsedData);
 			var rankedData = full_json_event_ranker(parsedData);
+			console.log("Ranked data:");
+			console.log(rankedData);
 			var compiledDictionary = dictionary_deparser(rankedData);
-			console.log("Final output...:");
+			console.log("Final output:");
 			console.log(compiledDictionary);
 		}
 	</script>
