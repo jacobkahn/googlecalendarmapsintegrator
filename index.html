@@ -204,12 +204,11 @@ One ring to rule them all.
 			console.log("Incoming OAuth Token:");
 			console.log(events);
 			var parsedData = parse_full_JSON_object(events);
-			console.log("Parsed data:");
-			console.log(parsedData);
+			console.log("Parsing data...");
 			var rankedData = full_json_event_ranker(parsedData);
-			console.log("Ranked data:");
-			console.log(rankedData);
+			console.log("Ranking events...");
 			var compiledDictionary = dictionary_deparser(rankedData);
+			console.log("Done!");
 			console.log("Final output:");
 			console.log(compiledDictionary);
 		}

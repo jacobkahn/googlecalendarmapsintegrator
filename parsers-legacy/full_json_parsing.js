@@ -34,7 +34,7 @@ function parse_full_JSON_object(events)
 				var start_time = start_time_pre_parse.substring(12,19);
 				var end_time = end_time_pre_parse.substring(12,19);
 				var event_details = {};
-				event_details["Name"] = event_name;
+				event_details["name"] = event_name;
 				event_details["start"] = start_time;
 				event_details["end"] = end_time;
 				event_details["location"] = event_location;
