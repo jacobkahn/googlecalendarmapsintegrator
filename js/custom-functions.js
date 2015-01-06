@@ -14,7 +14,8 @@ function toggle_visibility() {
    });
 }
 
-function bakeCookie(cookie) {
-	//document.cookie = "eventCookie"+ "=" + cookie + "; " + "expires=";
-	$.cookie('eventCookie', escape(cookie.join(',')), {expires:1234});
+function populateTags (details) {
+	for(i=0; i < details.length; i++) {
+		console.log(details[i][3]);
+	}
 }

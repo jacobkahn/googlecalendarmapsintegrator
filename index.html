@@ -26,7 +26,7 @@
 				<br />
 				<p>A quick and innovative solution for all your day to day planning issues. <br />We take your Google Calendar and visually display on a map <br /> when and where you need to be throughout your day.
 				<br /> <br />
-				This web app was developed for PennApps X by the best team in the universe. <br />Seriously. The best.</p>
+				This web app was developed for PennApps Spring by the best team in the universe. <br />Seriously. The best.</p>
 			</div>
 
 		<!-- Main -->
@@ -67,7 +67,7 @@
 				<footer class="major container small">
 					<h3>Get started already!</h3>
 					<p>Sign in with your Google account to begin using Calendar Mapper.</p>
-					<p onclick="toggle_visibility('initial');">
+					<p onclick="toggle_visibility();"></p>
 					<span id="signinButton">
 					  <span
 						class="g-signin"
@@ -79,7 +79,6 @@
 					  </span>
 					</span>
 				</footer>
-
 				</div>
 				<div id="mapper">
 					<div id="mapper-section-head">
@@ -100,11 +99,11 @@
 											<div class="clear"> </div>
 										</div>
 										<ul id="today">
-											<li><a href="">Rowing Pratice</a><span id="timeStamp">5:00AM</span></li>
-											<li><a href="">Yoga</a><span id="timeStamp">6:00AM</span></li>
-											<li><a href="">Breakfast</a><span id="timeStamp">7:00AM</span></li>
-											<li><a href="">Workshop</a><span id="timeStamp">8:30AM</span></li>
-											<li><a href="">Movie with Devesh</a><span id="timeStamp">11:00AM</span></li>
+											<li id="m1"><a href="">Rowing Pratice</a><span id="timeStamp">5:00AM</span></li>
+											<li id="m2"><a href="">Yoga</a><span id="timeStamp">6:00AM</span></li>
+											<li id="m3"><a href="">Breakfast</a><span id="timeStamp">7:00AM</span></li>
+											<li id="m4"><a href="">Workshop</a><span id="timeStamp">8:30AM</span></li>
+											<li id="m5"><a href="">Movie with Devesh</a><span id="timeStamp">11:00AM</span></li>
 										</ul>
 									</div>
 									<div class="top-grid">
@@ -113,10 +112,10 @@
 											<div class="clear"> </div>
 										</div>
 										<ul id="today">
-											<li><a href="">Go to work</a><span id="timeStamp">12:00PM</span></li>
-											<li><a href="">Lunch</a><span id="timeStamp">1:30PM</span></li>
-											<li><a href="">Back to work</a><span id="timeStamp">2:15PM</span></li>
-											<li><a href="">Bowling with Summer</a><span id="timeStamp">3:30PM</span></li>
+											<li id="a1"><a href="">Go to work</a><span id="timeStamp">12:00PM</span></li>
+											<li id="a2"><a href="">Lunch</a><span id="timeStamp">1:30PM</span></li>
+											<li id="a3"><a href="">Back to work</a><span id="timeStamp">2:15PM</span></li>
+											<li id="a4"><a href="">Bowling with Summer</a><span id="timeStamp">3:30PM</span></li>
 						  				</ul>
 									</div>
 									<div class="top-grid">
@@ -125,17 +124,17 @@
 											<div class="clear"> </div>
 										</div>
 										<ul id="today">
-											<li><a href="">Coffee with Natasha</a><span id="timeStamp">5:00PM</span></li>
-											<li><a href="">Football game on TV</a><span id="timeStamp">6:00PM</span></li>
-											<li><a href="">Dinner</a><span id="timeStamp">7:30PM</span></li>
-											<li><a href="">Go to parent's house</a><span id="timeStamp">8:00PM</span></li>
-											<li><a href="">Pool with Jacob</a><span id="timeStamp">10:00PM</span></li>
+											<li id="e1"><a href="">Coffee with Natasha</a><span id="timeStamp">5:00PM</span></li>
+											<li id="e2"><a href="">Football game on TV</a><span id="timeStamp">6:00PM</span></li>
+											<li id="e3"><a href="">Dinner</a><span id="timeStamp">7:30PM</span></li>
+											<li id="e4"><a href="">Go to parent's house</a><span id="timeStamp">8:00PM</span></li>
+											<li id="e5"><a href="">Pool with Jacob</a><span id="timeStamp">10:00PM</span></li>
   										</ul>
 									</div>
 									<div class="clear"> </div>
 								</div>
 								<div class="heading">
-									<h2>Calendar Map </h2>
+									<h2 id="maptitle">Calendar Map </h2>
 									<!-- href to index.html -->
 									<a id="refresh">|&nbsp;&nbsp; Refresh <img id="refIcon"src="images/refresh.png"> </a>
 									<div class="clear"> </div>
@@ -207,10 +206,11 @@ One ring to rule them all.
 			console.log("Parsing data...");
 			var rankedData = full_json_event_ranker(parsedData);
 			console.log("Ranking events...");
-			var compiledDictionary = dictionary_deparser(rankedData);
+			var eventDetailsList = dictionary_deparser(rankedData);
 			console.log("Done!");
 			console.log("Final output:");
-			console.log(compiledDictionary);
+			console.log(eventDetailsList);
+			populateTags(eventDetailsList);
 		}
 	</script>
 		
