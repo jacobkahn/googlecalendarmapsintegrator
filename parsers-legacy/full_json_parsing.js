@@ -1,8 +1,7 @@
-
+/** MAIN JSON TOKEN PARSER */
 function parse_full_JSON_object(events)
 {
 	var parsed_event_dict = [];
-
 	var date_now = new Date();
 	var current_month_false = date_now.getMonth();
 	var current_month_false = current_month_false + 1;
