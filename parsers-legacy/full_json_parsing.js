@@ -24,19 +24,19 @@ function parse_full_JSON_object(events)
 	{   
 		if (events["items"][i]["kind"] == "calendar#event")
 		{
-			var event_name = events["items"][i]["summary"];
-			var event_location = events["items"][i]["location"];
 			var event_start_date = events["items"][i]["start"]["dateTime"].substring(0,10);
-			var start_time = events["items"][i]["start"]["dateTime"].substring(11,16);
-			var end_time = events["items"][i]["end"]["dateTime"].substring(11,16);
-			var event_details = {};
-			
+	
 			//TODO: IMPLEMENT SUPPORT FOR RECURRING EVENTS (not currently supported)
 			//EDIT: WORKAROUND IMPLEMENTED BY DEVESH YAY, NOW SUPPORTED
 
 			if (event_start_date == current_date)
 			{
 				console.log("Event #"+i+" in this calendar is today. Extracting event data...");
+				var event_name = events["items"][i]["summary"];
+				var event_location = events["items"][i]["location"];
+				var start_time = events["items"][i]["start"]["dateTime"].substring(11,16);
+				var end_time = events["items"][i]["end"]["dateTime"].substring(11,16);
+				var event_details = {};
 				event_details["name"] = event_name;
 				event_details["start"] = start_time;
 				event_details["end"] = end_time;
