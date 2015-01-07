@@ -6,12 +6,31 @@ function populateTime() {
 	document.getElementById("day").innerHTML = dayS; 
 }
 
-function toggle_visibility() {
-   populateTime();
-   window.scroll(0,700);
-   $("#initial").fadeOut("slow", function() {
-	$("#mapper").fadeIn("slow", function() {});
-   });
+function toggle_visibility(data) {
+	populateTime();
+	window.scroll(0,700);
+	$("#initial").fadeOut("slow", function() {
+		$("#mapper").fadeIn("slow", function() {});
+	});
+	document.getElementById("map-canvas").style.height = "350px";
+	//initialize();
+	buildMap(data);
+}
+
+function handleData(events) {
+	console.log("Incoming OAuth Token:");
+	console.log(events);
+	var parsedData = parse_full_JSON_object(events);
+	console.log("Parsing data...");
+	var rankedData = full_json_event_ranker(parsedData);
+	console.log("Assigning orders...");
+	var eventDetailsList = dictionary_deparser(rankedData);
+	console.log("Done!");
+	console.log("Final output:");
+	console.log(eventDetailsList);
+	populateTags(eventDetailsList);
+	//if already logged in, smartly switch to map view
+	toggle_visibility(eventDetailsList);
 }
 
 function populateTags (details) {
