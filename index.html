@@ -19,6 +19,13 @@
 		</noscript>
 		
 		<script>
+			function resizeMap(m) {
+				x = m.getZoom();
+				c = m.getCenter();
+				google.maps.event.trigger(m, 'resize');
+				m.setZoom(x);
+				m.setCenter(c);
+    		};
 			var map;
 			function initialize() {
 				var mapOptions = {
@@ -28,9 +35,7 @@
 				map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 			}
 			google.maps.event.addDomListener(window, 'load', initialize);
-			google.maps.event.addListenerOnce(map, 'idle', function() {
-   google.maps.event.trigger(map, 'resize');
-});
+			resizeMap(map);
 		</script>
 		
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
@@ -42,8 +47,6 @@
 				<h1 id="appTitle">Hello World!<br /> This is Calendar Mapper</h1>
 				<br />
 				<p>A quick and innovative solution for all your day to day planning issues. <br />We take your Google Calendar and visually display on a map <br /> when and where you need to be throughout your day.
-				<br /> <br />
-				This web app was developed for PennApps Spring by the best team in the universe. <br />Seriously. The best.</p>
 			</div>
 
 		<!-- Main -->
@@ -116,11 +119,13 @@
 											<div class="clear"> </div>
 										</div>
 										<ul id="today">
-											<li id="m1"><a href="">Rowing Pratice</a><span id="timeStamp">5:00AM</span></li>
-											<li id="m2"><a href="">Yoga</a><span id="timeStamp">6:00AM</span></li>
-											<li id="m3"><a href="">Breakfast</a><span id="timeStamp">7:00AM</span></li>
-											<li id="m4"><a href="">Workshop</a><span id="timeStamp">8:30AM</span></li>
-											<li id="m5"><a href="">Movie with Devesh</a><span id="timeStamp">11:00AM</span></li>
+											<div id="c1">
+												<li id="m1"><a href="">Rowing Pratice</a><span id="timeStamp">5:00AM</span></li>
+												<li id="m2"><a href="">Yoga</a><span id="timeStamp">6:00AM</span></li>
+												<li id="m3"><a href="">Breakfast</a><span id="timeStamp">7:00AM</span></li>
+												<li id="m4"><a href="">Workshop</a><span id="timeStamp">8:30AM</span></li>
+												<li id="m5"><a href="">Movie with Devesh</a><span id="timeStamp">11:00AM</span></li>
+											</div>
 										</ul>
 									</div>
 									<div class="top-grid">
@@ -129,10 +134,12 @@
 											<div class="clear"> </div>
 										</div>
 										<ul id="today">
-											<li id="a1"><a href="">Go to work</a><span id="timeStamp">12:00PM</span></li>
-											<li id="a2"><a href="">Lunch</a><span id="timeStamp">1:30PM</span></li>
-											<li id="a3"><a href="">Back to work</a><span id="timeStamp">2:15PM</span></li>
-											<li id="a4"><a href="">Bowling with Summer</a><span id="timeStamp">3:30PM</span></li>
+											<div id="c2">
+												<li id="a1"><a href="">Go to work</a><span id="timeStamp">12:00PM</span></li>
+												<li id="a2"><a href="">Lunch</a><span id="timeStamp">1:30PM</span></li>
+												<li id="a3"><a href="">Back to work</a><span id="timeStamp">2:15PM</span></li>
+												<li id="a4"><a href="">Bowling with Summer</a><span id="timeStamp">3:30PM</span></li>
+											</div>
 						  				</ul>
 									</div>
 									<div class="top-grid">
@@ -141,11 +148,13 @@
 											<div class="clear"> </div>
 										</div>
 										<ul id="today">
+											<div id="c3">
 											<li id="e1"><a href="">Coffee with Natasha</a><span id="timeStamp">5:00PM</span></li>
 											<li id="e2"><a href="">Football game on TV</a><span id="timeStamp">6:00PM</span></li>
 											<li id="e3"><a href="">Dinner</a><span id="timeStamp">7:30PM</span></li>
 											<li id="e4"><a href="">Go to parent's house</a><span id="timeStamp">8:00PM</span></li>
 											<li id="e5"><a href="">Pool with Jacob</a><span id="timeStamp">10:00PM</span></li>
+											</div>
   										</ul>
 									</div>
 									<div class="clear"> </div>
@@ -237,7 +246,8 @@ One ring to rule them all.
 			    gapi.auth.getToken();
 				
 				var calendarName = gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {    
-					var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events?singleEvents=true";
+					//super smart HTTP GET request
+					var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events?singleEvents=true&orderBy=startTime&maxResults=2500";
 					
 					gapi.client.request({path: jsonPath, method: "GET", callback: function (events) {
 						handleData(events);

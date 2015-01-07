@@ -805,7 +805,7 @@
 				position: relative;
 			}
         #appTitle {
-            font-size: 45px;
+            font-size: 80px;
         }
 
 
@@ -1157,7 +1157,7 @@ span.trans
 .top-grids
 {
     position: relative;
-	padding: 40px 0px;
+	overflow: hidden;
 }
 .top-grid
 {
@@ -1171,7 +1171,7 @@ span.trans
 }
 .top-grid-info
 {
-	padding-bottom: 2em;
+	padding-bottom: 0.5em;
 }
 .top-grid-img 
 {
@@ -1184,11 +1184,10 @@ span.trans
 }
 .top-grid-info h2
 {
-	width:75%;
+	width:100%;
 	text-align: center;
 	color: #e8603c;
 	font-size:1.8em;
-
 }
 .top-grid p
 {
@@ -1221,9 +1220,9 @@ span.trans
 .heading
 {
 	padding-bottom: 3em;
-
 }
-.heading h2{
+.heading h2 {
+	position: relative;
 	float:left;
 	color: #e8603c;
 	font-size:1.3em;
