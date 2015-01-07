@@ -15,23 +15,28 @@ function toggle_visibility() {
 }
 
 function populateTags (details) {
-	m = 1; a = 1; e = 1;
+	m = 1; a = 1; e = 1; c1tag=""; c2tag=""; c3tag="";
 	for(i = 0; i < details.length; i++) {
 		var time = details[i][3];
 		var name = details[i][1];
 		var check = parseInt(time.substring(0,2));
 		if(check < 8) {
 			var tagname = "m" + m;
-			misc="AM"; m += 1;
+			misc = " AM"; m += 1;
+			c1tag = c1tag + "<li id=\""+tagname+"\"><a href=\"\">"+name+"</a><span id=\"timeStamp\">"+time+misc+"</span></li>";
 		}
 		else if((check >= 8) && (check < 16)) {
 			var tagname = "a" + a;
-			misc="PM"; a += 1;
+			misc = " PM"; a += 1;
+			c2tag = c2tag + "<li id=\""+tagname+"\"><a href=\"\">"+name+"</a><span id=\"timeStamp\">"+time+misc+"</span></li>";
 		}
 		else if(check >= 16) {
 			var tagname = "e" + e;
-			misc="PM"; e += 1;
-		}
-		document.getElementById(tagname).innerHTML = "<a href=\"\">"+name+"</a><span id=\"timeStamp\">"+time+misc+"</span>";
+			misc = " PM"; e += 1;
+			c3tag = c3tag + "<li id=\""+tagname+"\"><a href=\"\">"+name+"</a><span id=\"timeStamp\">"+time+misc+"</span></li>";
+		} 
 	}
+	document.getElementById("c1").innerHTML = c1tag;
+	document.getElementById("c2").innerHTML = c2tag;
+	document.getElementById("c3").innerHTML = c3tag;
 }
