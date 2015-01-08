@@ -4,6 +4,7 @@ var map;
 var geocoder;
 var list_of_markers = new Array();
 var directionsDisplay;
+var optimize = false;
 
 function placeMarker(singleEvent, callback) {
   var my_address = singleEvent[2];
@@ -30,13 +31,14 @@ function placeMarker(singleEvent, callback) {
 			    }
 			  	google.maps.event.addListener(marker, 'click', function() {
 					infowindow.open(map, marker); 
-			  		});
+			  	});
 				callback(marker);
-				} 
-				else 
-				{
-					console.log('Geocode was not successful for the following reason: ' + status);
-				}
+			} else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {    
+				setTimeout(function() {buildMap();}, 1000);
+			}else 
+			{
+				console.log('Geocode was not successful for the following reason: ' + status);
+			}
 		  }
 	  );
   }
@@ -46,6 +48,16 @@ function makeInfoWindowEvent(map, infowindow, marker) {
   google.maps.event.addListener(marker, 'click', function() {
 	infowindow.open(map, marker);
   });
+}
+
+function toggleOptimize() {
+	optimize = !optimize;
+	if(optimize){
+		document.getElementById("optimize").innerHTML = "Stick to schedule";
+	}else{
+		document.getElementById("optimize").innerHTML = "Optimize Route";
+	}
+	buildMap(calendarData);
 }
 
 function calcRoute(inputmarkers) {
@@ -61,7 +73,7 @@ function calcRoute(inputmarkers) {
 	  origin: start,
 	  destination: end,
 	  waypoints: wpts,
-	  //optimizeWaypoints: true, //creates optimal path
+	  optimizeWaypoints: optimize,
 	  travelMode: google.maps.TravelMode.DRIVING
   };
   directionsService.route(request, function(response, status) {
@@ -85,6 +97,9 @@ function createMarkerList(m, size) {
 
 function buildMap(input) 
 {
+	if(input == undefined) {
+		setTimeout(function () {}, 1000);
+	}
 	if(list_of_markers.length > 0) {
 		for(i=0; i<list_of_markers.length;i++){
 			list_of_markers[i].setMap(null);
