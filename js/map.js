@@ -3,6 +3,7 @@ var directionsService = new google.maps.DirectionsService();
 var map;
 var geocoder;
 var list_of_markers = new Array();
+var directionsDisplay;
 
 function placeMarker(singleEvent, callback) {
   var my_address = singleEvent[2];
@@ -50,9 +51,9 @@ function makeInfoWindowEvent(map, infowindow, marker) {
 function calcRoute(inputmarkers) {
   console.log("Calculating "+inputmarkers.length+" routes...");
   wpts = [];
-  for (var i=1; i<inputmarkers.length-2; i++)
+  for (var i=1; i<inputmarkers.length-1; i++)
   {
-  	  wpts.push({location: inputmarkers[i].getPosition(), stopover:true})
+  	  wpts.push({location: inputmarkers[i].getPosition(), stopover:true});
   }
   var start = inputmarkers[0].getPosition();
   var end = inputmarkers[inputmarkers.length - 1].getPosition();
@@ -60,7 +61,7 @@ function calcRoute(inputmarkers) {
 	  origin: start,
 	  destination: end,
 	  waypoints: wpts,
-	  optimizeWaypoints: true,
+	  //optimizeWaypoints: true, //creates optimal path
 	  travelMode: google.maps.TravelMode.DRIVING
   };
   directionsService.route(request, function(response, status) {
@@ -84,9 +85,25 @@ function createMarkerList(m, size) {
 
 function buildMap(input) 
 {
+	if(list_of_markers.length > 0) {
+		for(i=0; i<list_of_markers.length;i++){
+			list_of_markers[i].setMap(null);
+		}
+		list_of_markers = new Array();
+	}
+	if(directionsDisplay != undefined) {
+		directionsDisplay.setMap(null);
+		directionsDisplay.setPanel(null);
+		directionsDisplay = null;
+	}
 	console.log("Building map...");
-	var list_of_list = input;
-	var marker_list = new Array();
+	var list_of_list = new Array();
+	for(i=0; i<input.length; i++){
+		if(document.getElementById(i+1).checked) {
+			list_of_list.push(input[i]);	
+		}
+	}
+	var marker_list = [];
 	directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
 	var mapOptions = 
 	{
