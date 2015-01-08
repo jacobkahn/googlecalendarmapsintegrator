@@ -1227,9 +1227,29 @@ span.trans
 	color: #e8603c;
 	font-size:1.3em;
 }
-#map-canvas{
+#mainmapper{
 	margin: 0 auto;
 	width: 80%;
+}
+#map-canvas{
+	margin: 0 auto;
+	width: 69%;
+}
+#directions-panel {
+	float: right;
+	overflow: auto;
+	width: 30%;
+}
+@media print {
+        #map-canvas {
+          height: 350px;
+          margin: 0;
+        }
+
+        #directions-panel {
+          float: none;
+          width: auto;
+        }
 }
 #refresh{
     float: left;

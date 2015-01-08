@@ -13,6 +13,7 @@ function toggle_visibility(data) {
 		$("#mapper").fadeIn("slow", function() {});
 	});
 	document.getElementById("map-canvas").style.height = "350px";
+	document.getElementById("directions-panel").style.height = "350px";
 	//initialize();
 	buildMap(data);
 }
