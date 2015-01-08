@@ -227,6 +227,10 @@
 		margin: 0 0 0.5em 0;
 	}
 
+	input[type="checkbox"] {
+		margin-top: 6px;
+	}
+
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],
@@ -982,7 +986,7 @@
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:arial;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-size:15px;
 	padding:10px 25px;
 	text-decoration:none;
@@ -1284,14 +1288,20 @@ span.trans
           width: auto;
         }
 }
-#refresh{
-    float: left;
-    color: #f3af9d;
-    font-size: 1.3em;
+#optimize{
+	background-color: #eeeeee;
+	text-transform: uppercase;
+	color: #000000;
+	padding: 0 5px;
+	font-family: 'Source Sans Pro', sans-serif;    
+	float: left;
+    font-size: 1.1em;
     margin-left: 10px;
+	margin-top: 5px;
 }
-#refresh:hover {
-    color: #e8603c;
+#optimize:hover {
+    color: #17822c;
+	cursor: pointer;
 }
 #refIcon {
     width: 20px;
