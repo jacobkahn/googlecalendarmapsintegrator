@@ -6,7 +6,7 @@ function populateTime() {
 	document.getElementById("day").innerHTML = dayS; 
 }
 
-function toggle_visibility(data) {
+function toggle_mainmapper(data) {
 	populateTime();
 	window.scroll(0,700);
 	$("#initial").fadeOut("slow", function() {
@@ -14,8 +14,14 @@ function toggle_visibility(data) {
 	});
 	document.getElementById("map-canvas").style.height = "350px";
 	document.getElementById("directions-panel").style.height = "350px";
-	//initialize();
 	buildMap(data);
+}
+
+function toggle_noevents() {
+	window.scroll(0,700);
+	$("#initial").fadeOut("slow", function() {
+		$("#noevents").fadeIn("slow", function () {});
+	});
 }
 
 function handleData(events) {
@@ -30,8 +36,13 @@ function handleData(events) {
 	console.log("Final output:");
 	console.log(eventDetailsList);
 	populateTags(eventDetailsList);
-	//if already logged in, smartly switch to map view
-	toggle_visibility(eventDetailsList);
+	if(eventDetailsList.length > 0) {
+		toggle_mainmapper(eventDetailsList);
+	}
+	else{
+		console.log("No events!");
+		toggle_noevents();
+	}
 }
 
 function populateTags (details) {

@@ -10,7 +10,7 @@ function placeMarker(singleEvent, callback) {
   if (my_rank != undefined) {
 	  geocoder.geocode ( 
 	  { 'address': my_address }, 
-		function(results, status){
+		function( results, status){
 			if (status == google.maps.GeocoderStatus.OK) {
 				map.setCenter(results[0].geometry.location);
 			    var marker = new google.maps.Marker ({
