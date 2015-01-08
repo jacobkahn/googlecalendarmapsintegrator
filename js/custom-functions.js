@@ -11,6 +11,7 @@ function toggle_mainmapper(data) {
 	window.scroll(0,700);
 	$("#initial").fadeOut("slow", function() {
 		$("#mapper").fadeIn("slow", function() {});
+		$("#revokeButtonTag").fadeIn("slow", function() {});
 	});
 	document.getElementById("map-canvas").style.height = "350px";
 	document.getElementById("directions-panel").style.height = "350px";
@@ -21,6 +22,7 @@ function toggle_noevents() {
 	window.scroll(0,700);
 	$("#initial").fadeOut("slow", function() {
 		$("#noevents").fadeIn("slow", function () {});
+		$("#revokeButtonTag").fadeIn("slow", function() {});
 	});
 }
 
