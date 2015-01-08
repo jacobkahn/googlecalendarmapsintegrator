@@ -6,12 +6,43 @@ function populateTime() {
 	document.getElementById("day").innerHTML = dayS; 
 }
 
-function toggle_visibility() {
-   populateTime();
-   window.scroll(0,700);
-   $("#initial").fadeOut("slow", function() {
-	$("#mapper").fadeIn("slow", function() {});
-   });
+function toggle_mainmapper(data) {
+	populateTime();
+	window.scroll(0,700);
+	$("#initial").fadeOut("slow", function() {
+		$("#mapper").fadeIn("slow", function() {});
+	});
+	document.getElementById("map-canvas").style.height = "350px";
+	document.getElementById("directions-panel").style.height = "350px";
+	buildMap(data);
+}
+
+function toggle_noevents() {
+	window.scroll(0,700);
+	$("#initial").fadeOut("slow", function() {
+		$("#noevents").fadeIn("slow", function () {});
+	});
+}
+
+function handleData(events) {
+	console.log("Incoming OAuth Token:");
+	console.log(events);
+	var parsedData = parse_full_JSON_object(events);
+	console.log("Parsing data...");
+	var rankedData = full_json_event_ranker(parsedData);
+	console.log("Assigning orders...");
+	var eventDetailsList = dictionary_deparser(rankedData);
+	console.log("Done!");
+	console.log("Final output:");
+	console.log(eventDetailsList);
+	populateTags(eventDetailsList);
+	if(eventDetailsList.length > 0) {
+		toggle_mainmapper(eventDetailsList);
+	}
+	else{
+		console.log("No events!");
+		toggle_noevents();
+	}
 }
 
 function populateTags (details) {
