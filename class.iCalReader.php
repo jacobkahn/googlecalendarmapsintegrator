@@ -231,40 +231,52 @@ class ICal
         return ( count($this->events()) > 0 ? true : false );
     }
 
-    /**
-     * Returns a boolean value whether thr current calendar has events or not
+        /**
+     * Returns false when the current calendar has no events in range, else the
+     * events.
+     * 
+     * Note that this function makes use of a UNIX timestamp. This might be a 
+     * problem on January the 29th, 2038.
+     * See http://en.wikipedia.org/wiki/Unix_time#Representing_the_number
      *
-     * @param {boolean} $rangeStart Either true or false
-     * @param {boolean} $rangeEnd   Either true or false
+     * @param {boolean} or {time} $rangeStart Either true or false or unix timestamp
+     * @param {boolean} or {time} $rangeEnd   Either true or false or unix timestamp
      *
-     * @return {boolean}
+     * @return {mixed}
      */
     public function eventsFromRange($rangeStart = false, $rangeEnd = false) 
     {
+        $events = $this->sortEventsWithOrder($this->events(), SORT_ASC);
+
+        if (!$events) {
+            return false;
+        }
+
         $extendedEvents = array();
         
-        if (!$rangeStart) {
-            $rangeStart = new DateTime();
-        }
-        if (!$rangeEnd) {
-            $rangeEnd = new DateTime('2038/12/31');
+        if ($rangeStart === true) {
+            $rangeStart = time();
+        } else if ($rangeStart === false) {
+            $rangeStart = 0;
         }
 
-        $rangeStart = $rangeStart->format('U');
-        $rangeEnd   = $rangeEnd->format('U');
-
-        $events = $this->sortEventsWithOrder($this->events(), SORT_ASC);
+        if ($rangeEnd === true or ($rangeEnd <= $rangeStart && $rangeStart <= time())) {
+            $rangeEnd = time();
+        } else if ($rangeEnd === false or $rangeEnd <= $rangeStart) {
+            $rangeEnd = strtotime('2038-01-18');
+        }
 
         // loop through all events by adding two new elements
         foreach ($events as $anEvent) {
-            $timestamp = $this->iCalDateToUnixTimestamp($anEvent['DTSTART']);
-            if ($timestamp >= $rangeStart) {
-                $extendedEvents[] = $anEvent;
-            }
+            $dtStart = $this->iCalDateToUnixTimestamp($anEvent['DTSTART']);
+            $dtEnd = $this->iCalDateToUnixTimestamp($anEvent['DTEND']);
+            if ($dtEnd >= $rangeStart && $dtStart <= $rangeEnd) $extendedEvents[] = $anEvent;
         }
 
         return $extendedEvents;
     }
+
+
 
     /**
      * Returns a boolean value whether thr current calendar has events or not

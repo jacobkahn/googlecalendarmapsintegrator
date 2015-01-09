@@ -23,11 +23,13 @@ if ($uploadOk == 0) {
 else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-		$ical   = new ICal('event_calendar.ics');
-		$events = $ical->events();
+		$ical = new ICal($target_file);
+		
 
-		$date = $events[0]['DTSTART'];
-
+		//$date = $events[0]['DTSTART'];
+		$todaystart = strtotime("00:00:00");
+		$todayend = strtotime("23:59:59");
+		$events = $ical->eventsFromRange($todaystart, $todayend);
 		echo "The number of events: ";
 		echo $ical->event_count;
 		echo "<br/>";
