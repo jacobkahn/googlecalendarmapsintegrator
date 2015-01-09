@@ -33,8 +33,12 @@ function placeMarker(singleEvent, callback) {
 					infowindow.open(map, marker); 
 			  	});
 				callback(marker);
-			} else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {    
-				setTimeout(function() {buildMap(calendarData);}, 1000);
+			} else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {  
+				console.log("OVER QUERY LIMIT!");
+				setTimeout(function() {
+					console.log("Rebuilding attempt.");
+					buildMap(calendarData);
+				}, 5000);
 			}else 
 			{
 				console.log('Geocode was not successful for the following reason: ' + status);
@@ -79,10 +83,12 @@ function calcRoute(inputmarkers) {
   directionsService.route(request, function(response, status) {
 	if (status == google.maps.DirectionsStatus.OK) {
 	  console.log("Directions engine OK!");
+	  console.log("---------------------");
 	  directionsDisplay.setDirections(response);
+	  document.getElementById("loading").style.display = "none";
 	}
 	else {
-		console.log("Impossible route. Skipping...");
+		console.log("Directions engine ERROR: " + status);
 	}
   });
 }
@@ -132,11 +138,21 @@ function buildMap(input)
 	directionsDisplay.setPanel(document.getElementById('directions-panel'));
 	geocoder = new google.maps.Geocoder();
 	console.log("Geocoder powering up...");
-	for (var i=0; i<list_of_list.length; i++) {
+	/*for (var i=0; i<list_of_list.length; i++) {
 		placeMarker(list_of_list[i], function(marker) { 
 			createMarkerList(marker, list_of_list.length);
 		});
 	}
+	*/
+	document.getElementById("loading").style.display = "block";
+	i = 0;
+	interval = setInterval(function() {
+		placeMarker(list_of_list[i], function(marker) {
+			createMarkerList(marker, list_of_list.length);
+		});
+		i++;
+		if(i > list_of_list.length - 1) {clearInterval(interval)}
+	}, 100);
 	
 	/**
 	TODO: Traffic layer - create a tab for viewing additional data?

@@ -8,6 +8,13 @@ function populateTime() {
 	document.getElementById("day").innerHTML = dayS; 
 }
 
+function toggleCheckBox(id, data) {
+	console.log("Toggling event tag: #"+id);
+	var toggle = document.getElementById(id).checked;
+	document.getElementById(id).checked = !toggle;
+	buildMap(calendarData);
+}
+
 function toggle_mainmapper(data) {
 	populateTime();
 	window.scroll(0,700);
@@ -78,11 +85,4 @@ function populateTags (details) {
 	document.getElementById("c1").innerHTML = c1tag;
 	document.getElementById("c2").innerHTML = c2tag;
 	document.getElementById("c3").innerHTML = c3tag;
-}
-
-function toggleCheckBox(id, data) {
-	console.log("Toggling event tag: #"+id);
-	var toggle = document.getElementById(id).checked;
-	document.getElementById(id).checked = !toggle;
-	buildMap(calendarData);
 }
