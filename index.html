@@ -205,6 +205,7 @@ One ring to rule them all.
 				
 				var calendarName = gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {    
 					//super smart HTTP GET request
+					console.log("Incoming calendars: "+ calendarList);
 					var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events?singleEvents=true&orderBy=startTime&maxResults=2500";
 					
 					gapi.client.request({path: jsonPath, method: "GET", callback: function (events) {

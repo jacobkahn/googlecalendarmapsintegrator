@@ -104,8 +104,7 @@ function createMarkerList(m, size) {
 function buildMap(input) 
 {
 	if(input == undefined || directionsDisplay == undefined) {
-		console.log("Undefined loadout error.");
-		setTimeout(function () {}, 500);
+		setTimeout(function () {}, 100);
 	}
 	if(list_of_markers.length > 0) {
 		for(i=0; i<list_of_markers.length;i++){
