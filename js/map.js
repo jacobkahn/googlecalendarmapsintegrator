@@ -136,4 +136,10 @@ function buildMap(input)
 			createMarkerList(marker, list_of_list.length);
 		});
 	}
+	
+	/**
+	TODO: Traffic layer - create a tab for viewing additional data?
+	var trafficLayer = new google.maps.TrafficLayer();
+  	trafficLayer.setMap(map);
+	*/
 }
