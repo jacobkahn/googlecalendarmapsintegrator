@@ -34,7 +34,7 @@ function placeMarker(singleEvent, callback) {
 			  	});
 				callback(marker);
 			} else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {    
-				setTimeout(function() {buildMap();}, 1000);
+				setTimeout(function() {buildMap(calendarData);}, 1000);
 			}else 
 			{
 				console.log('Geocode was not successful for the following reason: ' + status);
@@ -97,8 +97,8 @@ function createMarkerList(m, size) {
 
 function buildMap(input) 
 {
-	if(input == undefined) {
-		setTimeout(function () {}, 1000);
+	if(input == undefined || directionsDisplay == undefined) {
+		setTimeout(function () {}, 500);
 	}
 	if(list_of_markers.length > 0) {
 		for(i=0; i<list_of_markers.length;i++){
