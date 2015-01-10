@@ -49,14 +49,12 @@ else {
         echo "Sorry, there was an error uploading your file.";
     }
 }
-//header("Location: index.html");
+header("Location: index.html");
 ?>
 
 <script type="text/javascript">
 	var ics_events_js= <?php echo json_encode( $ics_events ) ?>;
 	console.log(ics_events_js);
-	for (i=0; i<ics_events_js.length;  i++) {
-		calendarData.push(ics_events_js[i])
-	}
+	updatePageWithCalendarData(ics_events_js);
 </script>
 
