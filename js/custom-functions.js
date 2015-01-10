@@ -46,12 +46,16 @@ function handleData(events) {
 	console.log("Done!");
 	console.log("Final output:");
 	console.log(eventDetailsList);
-	populateTags(eventDetailsList);
-	for (i=0; i<eventDetailsList.length;  i++) {
-		calendarData.push(eventDetailsList[i])
+	updatePageWithCalendarData(eventDetailsList);
+}
+
+function updatePageWithCalendarData(data) {
+	for (i=0; i<data.length; i++) {
+		calendarData.push(data[i])
 	}
-	if(eventDetailsList.length > 0) {
-		toggle_mainmapper(eventDetailsList);
+	populateTags(calendarData);
+	if(calendarData.length > 0) {
+		toggle_mainmapper(calendarData);
 	}
 	else{
 		console.log("No events!");

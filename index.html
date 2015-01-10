@@ -66,8 +66,8 @@
 				</div>
 
 				<footer class="major container small">
-					<h3>Get started already!</h3>
-					<p>Sign in with your Google account to begin using Calendar Mapper.</p>
+					<h3>Start using Calendar Mapper!</h3>
+					<p>Sign in with your Google account</p>
 					<p onclick="toggle_visibility();"></p>
 					<span id="signinButton">
 					  <span
@@ -79,6 +79,13 @@
 						data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/calendar">
 					  </span>
 					</span>
+					<div id="uploadTag" style="margin-top: 30px">
+						<form action="upload.php" method="post" enctype="multipart/form-data">
+							<p align ="center"> Choose a calendar file (*.ics) to upload: </p>
+							<p align ="center"><input type="file" name="fileToUpload" id="fileToUpload"></p>
+							<p align ="center"><input type="submit" value="Upload calendar" name="submit"></p>
+						</form>
+					</div>
 				</footer>
 				</div>
 				<div id="noevents">
