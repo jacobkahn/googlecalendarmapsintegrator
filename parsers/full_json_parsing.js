@@ -19,9 +19,10 @@ function parse_full_JSON_object(events) {
 	console.log("Today's date: " + current_date);
 	for (var i = 0; i < events.items.length; i++) {
 		if (events["items"][i]["kind"] === "calendar#event") {
+			var event_number = i + 1;
 			var event_start_date = events["items"][i]["start"]["dateTime"].substring(0, 10);
 			if (event_start_date === current_date) {
-				console.log("Event #" + i + " in this calendar is today. Extracting event data...");
+				console.log("Event #" + event_number + " in this calendar is today. Extracting event data...");
 				var event_name = events["items"][i]["summary"];
 				var event_location = events["items"][i]["location"];
 				var start_time = events["items"][i]["start"]["dateTime"].substring(11, 16);
