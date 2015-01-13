@@ -7,16 +7,15 @@ function parse_calendar_name(calendarList) {
     "use strict";
 	var calendarRequestList = [];
 	if (calendarList.kind === "calendar#calendarList") {
-        for (var i = 0; i < (calendarList.items.length - 1); i++) {
-			if (calendarList.items[i].id !== "#contacts@group.v.calendar.google.com" || calendarList.items[i].id !== "en.usa#holiday@group.v.calendar.google.com") {
+        for (var i = 0; i < (calendarList.items.length); i++) {
+			if (!((calendarList.items[i].id) === "#contacts@group.v.calendar.google.com" || (calendarList.items[i].id) === "en.usa#holiday@group.v.calendar.google.com")) {
 				calendarRequestList.push(calendarList.items[i].id);
 			} else {
-				console.log("Error - invalid calendarList JSON object.");
+				console.log("Contact/holiday calendar popped.");
 				break;
 			}
 		}
-		var firstRequestListItem = calendarRequestList[0];
-		console.log("Calendar ID: " + firstRequestListItem);
-		return firstRequestListItem;
+		console.log("Calendar IDs: " + calendarRequestList);
+	return calendarRequestList;
 	}
 }

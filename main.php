@@ -281,14 +281,22 @@ One ring to rule them all.
 			    gapi.auth.getToken();
 				
 				var calendarName = gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {    
-					//super smart HTTP GET request
-					console.log("Incoming calendars: ");
-					console.log(calendarList);
-					var jsonPath = "calendar/v3/calendars/"+parse_calendar_name(calendarList)+"/events?singleEvents=true&orderBy=startTime&maxResults=2500";
-					
-					gapi.client.request({path: jsonPath, method: "GET", callback: function (events) {
-						handleData(events);
-					}})
+					// Even smarter HTTP GET request!
+					var parsed_calendar_list = parse_calendar_name(calendarList);
+					var cumulative_event_list = [];
+					for (var i = 0; i < parsed_calendar_list.length; i++) {
+						var jsonPath = "calendar/v3/calendars/"+parsed_calendar_list[i]+"/events?maxResults=2500";
+						console.log(parsed_calendar_list[i]);
+						gapi.client.request({path: jsonPath, method: "GET", callback: function (events) {
+							console.log("Here are some events")
+							console.log(events);
+							for (var i = 0; i < events.length; i++) {
+								cumulative_event_list.push(events["items"][i]);
+								console.log(cumulative_event_list);
+							}
+						}})
+					};
+					handleData(cumulative_event_list);
 				}})
 				} else {
 					console.log("Uh oh, something's wrong... " + authResult['error']);
