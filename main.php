@@ -279,25 +279,33 @@ One ring to rule them all.
 			if (authResult['status']['signed_in']) {
 				console.log('User signed in...processing data.');
 			    gapi.auth.getToken();
-				
 				var calendarName = gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {    
 					// Even smarter HTTP GET request!
 					var parsed_calendar_list = parse_calendar_name(calendarList);
 					var cumulative_event_list = [];
+					var batchRequest = gapi.client.newBatch();
 					for (var i = 0; i < parsed_calendar_list.length; i++) {
-						var jsonPath = "calendar/v3/calendars/"+parsed_calendar_list[i]+"/events?maxResults=2500";
-						console.log(parsed_calendar_list[i]);
-						gapi.client.request({path: jsonPath, method: "GET", callback: function (events) {
-							console.log("Here are some events")
-							console.log(events);
-							for (var i = 0; i < events.length; i++) {
-								cumulative_event_list.push(events["items"][i]);
-								console.log(cumulative_event_list);
-							}
-						}})
-					};
-					handleData(cumulative_event_list);
-				}})
+						var calRequest = gapi.client.request({
+						  'path': 'calendar/v3/calendars/' +parsed_calendar_list[i] + '/events',
+						  'params': {'maxResults': '2500'}
+						});
+						batchRequest.add(calRequest);
+					}
+					batchRequest.then(function (result) {
+						var calendar_hashlist = Object.keys(result["result"]);
+						var aggregate_event_list = [];
+						for (var i = 0; i < calendar_hashlist.length; i++) {
+							var temp_hash = calendar_hashlist[i];
+							var temp_event_list = result["result"][temp_hash]["result"]["items"];
+							aggregate_event_list = aggregate_event_list.concat(temp_event_list);
+						}
+						// Repackage for old parsers
+						var aggregate_event_hash = {};
+						aggregate_event_hash["items"] = aggregate_event_list;
+						handleData(aggregate_event_hash);
+					})
+					}
+				})
 				} else {
 					console.log("Uh oh, something's wrong... " + authResult['error']);
 				}
