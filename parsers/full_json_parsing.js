@@ -6,7 +6,6 @@
 /*jslint plusplus: true */
 function parse_full_JSON_object(events) {
     "use strict";
-    console.log(events);
 	var parsed_event_dict_list = [], date_now = new Date(), current_month = date_now.getMonth() + 1;
 	if (current_month < 10) {
 		current_month = "0" + current_month;

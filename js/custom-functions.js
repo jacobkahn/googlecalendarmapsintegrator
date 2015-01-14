@@ -57,9 +57,6 @@ function toggle_noevents() {
 }
 
 function handleData(events) {
-    // for (var i = 0; i < result.length; i++) {
-    // 	result
-    // }
     "use strict";
 	console.log("Incoming OAuth Token:");
 	console.log(events);

@@ -189,7 +189,7 @@ One ring to rule them all.
 				var ready = "<?php echo $uploadOk?>";
 				if (ready == 1) {
 			    	window.onload = function() {
-					var ics_events_js= "<?php echo json_encode( $ics_events ) ?>";
+					var ics_events_js = "<?php echo json_encode( $ics_events ) ?>";
 					console.log(ics_events_js);
 					updatePageWithCalendarData(ics_events_js);
 					}
@@ -234,7 +234,7 @@ One ring to rule them all.
 					for (var i = 0; i < parsed_calendar_list.length; i++) {
 						var calRequest = gapi.client.request({
 						  'path': 'calendar/v3/calendars/' +parsed_calendar_list[i] + '/events',
-						  'params': {'maxResults': '2500'}
+						  'params': {'maxResults': '2500', 'singleEvents': 'true'}
 						});
 						batchRequest.add(calRequest);
 					}

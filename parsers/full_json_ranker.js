@@ -5,7 +5,6 @@
 /*jshint sub:true*/
 /*jslint plusplus: true */
 
-// Sorter helper (it's still done in O(n * log(n)): don't worry)!
 var sort_by = function(field, reverse, primer) {
 
    var key = primer ? 
