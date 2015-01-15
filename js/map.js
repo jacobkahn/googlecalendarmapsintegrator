@@ -22,8 +22,9 @@ function placeMarker(singleEvent, callback) {
                         position: results[0].geometry.location,
                         icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + my_rank + '|00CC00|000000'
                     });
-                    var infowindow = new google.maps.InfoWindow({ maxWidth: 320 }), info = singleEvent[1] + '\n';
-                    info += 'from ' + singleEvent[3] + ' to ' + singleEvent[4];
+                    var infowindow = new google.maps.InfoWindow({ maxWidth: 320 })
+					var info = singleEvent[1];
+                    info += '<strong> from ' + singleEvent[3] + ' to ' + singleEvent[4] + '</strong>';
                     info += ' at ' + singleEvent[2];
                     if (!infowindow) {
                         infowindow = new google.maps.InfoWindow({content: info});

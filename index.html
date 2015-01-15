@@ -19,6 +19,14 @@
 			<link rel="stylesheet" href="css/style-wide.css" />
 		</noscript>
 		<script src="js/map.js" type="text/javascript"></script>
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+        <script>
+        $(document).ready(function() {
+          $("#choosedate").datepicker();
+        });
+		</script>
 		
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
@@ -70,6 +78,10 @@
 				</div>
 
 				<footer class="major container small">
+					<form>
+						<h3>Select the date you want to plan:</h3>
+						<input id="choosedate" placeholder="Select date..."></input>
+					</form>
 					<h3>Start using Calendar Mapper!</h3>
 					<p>Sign in with your Google account</p>
 					<p onclick="toggle_visibility();"></p>
@@ -181,10 +193,9 @@
 
 <!--
 
-One ring to rule them all.
+Para-para-paradise
 
 -->
-	<script src="js/custom-functions.js" type="text/javascript"></script>
 	<script type="text/javascript">
 				var ready = "<?php echo $uploadOk?>";
 				if (ready == 1) {

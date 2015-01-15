@@ -6,7 +6,16 @@
 /*jslint plusplus: true */
 function parse_full_JSON_object(events) {
     "use strict";
-	var parsed_event_dict_list = [], date_now = new Date(), current_month = date_now.getMonth() + 1;
+	var parsed_event_dict_list = [];
+	if ($("#choosedate").datepicker("getDate") == null) {
+		console.log("No custom specified date. Using default.");
+		var date_now = new Date();
+    }
+    else {
+        var date_now = $("#choosedate").datepicker("getDate");
+		console.log("Using custom date: " + date_now);
+    }
+	var current_month = date_now.getMonth() + 1;
 	if (current_month < 10) {
 		current_month = "0" + current_month;
 	}

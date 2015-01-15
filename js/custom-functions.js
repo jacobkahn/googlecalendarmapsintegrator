@@ -5,7 +5,13 @@ var calendarData = [];
 
 function populateTime() {
     "use strict";
-	var now = new Date(), dayW = now.getDay(), dayS = "";
+	if ($("#choosedate").datepicker("getDate") == null) {
+		var now = new Date();
+    }
+    else {
+        var now = $("#choosedate").datepicker("getDate");
+    }
+	var dayW = now.getDay(), dayS = "";
 	if (dayW === 0) {
         dayS = "Sunday";
     } else if (dayW === 1) {
