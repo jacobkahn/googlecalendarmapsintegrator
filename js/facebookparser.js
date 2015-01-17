@@ -136,6 +136,7 @@ function getEvents()
           }
         }
         console.log(today_fb_events); 
+		updatePageWithCalendarData(today_fb_events);
       }               
   );
   /*
