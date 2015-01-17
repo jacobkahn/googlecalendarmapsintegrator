@@ -83,6 +83,7 @@ function getEvents()
             fb_events[i].push(response.data[i].end_time); 
             fb_events[i].push(response.data[i].id);    
         }
+		var count = 1;
         //sort the events by starting time
         fb_events.sort(sort_by(3, true, primerFunction));
         var date_now = new Date(2015, 1, 16, 1,1,1,1);
@@ -131,7 +132,9 @@ function getEvents()
               var myendtime = String(end_hour)+':'+String(end_minute);
                 //return today's events
               fb_events[i][3] = mystarttime;
-              fb_events[i][4] = myendtime;
+              fb_events[i][4] = myendtime;              
+			  fb_events[i][0] = count;
+			  count += 1;
               today_fb_events.push(fb_events[i]);
           }
         }
