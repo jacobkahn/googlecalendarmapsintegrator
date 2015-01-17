@@ -93,13 +93,16 @@ function calcRoute(inputmarkers, events) {
         if (status === google.maps.DirectionsStatus.OK) {
 			var tripLegs = response.routes[0].legs;
 			document.getElementById("warnings").style.display = "none";
+			var dynamictag = "";
 			for(var i=0; i < tripLegs.length; i++) {
 				if(events.length >= 2) {
 					var legDuration = tripLegs[i].duration.value;
 					var timeBetweenEvents = (toSeconds(events[i+1][3]) - toSeconds(events[i][4]));
 					if(legDuration > timeBetweenEvents) {
 						document.getElementById("warnings").style.display = "block";
-						document.getElementById("warningtext").innerHTML = "<strong id=\"alert\">WARNING: </strong> Based on current traffic data, your event \""+events[i][1]+"\" can't be reached in time after \""+events[i+1][1]+"\" -- Traffic data by Google";
+						dynamictag += "<h3><strong id=\"alert\">WARNING: </strong> Based on current traffic data, your event \""+events[i][1]+"\" can't be reached in time after \""+events[i+1][1]+"\" -- Traffic data by Google</h3>"
+						document.getElementById("warnings").innerHTML = dynamictag;
+						//document.getElementById("warningtext").innerHTML = "<strong id=\"alert\">WARNING: </strong> Based on current traffic data, your event \""+events[i][1]+"\" can't be reached in time after \""+events[i+1][1]+"\" -- Traffic data by Google";
 					}
 				}
 			}
