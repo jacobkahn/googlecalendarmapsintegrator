@@ -67,7 +67,7 @@ function toggleOptimize() {
     buildMap(calendarData);
 }
 
-function calcRoute(inputmarkers) {
+function calcRoute(inputmarkers, events) {
     "use strict";
     console.log("Calculating " + inputmarkers.length + " routes...");
     var wpts = [];
@@ -84,6 +84,18 @@ function calcRoute(inputmarkers) {
     };
     directionsService.route(request, function (response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
+			var tripLegs = response.routes[0].legs;
+			document.getElementById("warnings").style.display = "none";
+			for(var i=0; i < tripLegs.length; i++) {
+				if(events.length >= 2) {
+					var legDuration = tripLegs[i].duration.value;
+					var timeBetweenEvents = (toSeconds(events[i+1][3]) - toSeconds(events[i][4]));
+					if(legDuration > timeBetweenEvents) {
+						document.getElementById("warnings").style.display = "block";
+						document.getElementById("warningtext").innerHTML = "<strong id=\"alert\">WARNING: </strong> Based on current traffic data, your event \""+events[i][1]+"\" can't be reached in time after \""+events[i+1][1]+"\" -- Traffic data by Google";
+					}
+				}
+			}
             console.log("Directions engine OK!");
             console.log("---------------------");
             directionsDisplay.setDirections(response);
@@ -94,12 +106,12 @@ function calcRoute(inputmarkers) {
     });
 }
 
-function createMarkerList(m, size) {
+function createMarkerList(m, events) {
     "use strict";
     list_of_markers.push(m);
-    if (list_of_markers[size - 1] !== undefined) {
+    if (list_of_markers[events.length - 1] !== undefined) {
         console.log('Async load complete.');
-        calcRoute(list_of_markers);
+        calcRoute(list_of_markers, events);
     }
 }
 
@@ -139,17 +151,11 @@ function buildMap(input)
 	directionsDisplay.setPanel(document.getElementById('directions-panel'));
 	geocoder = new google.maps.Geocoder();
 	console.log("Geocoder powering up...");
-	/*for (var i=0; i<list_of_list.length; i++) {
-		placeMarker(list_of_list[i], function(marker) { 
-			createMarkerList(marker, list_of_list.length);
-		});
-	}
-	*/
 	document.getElementById("loading").style.display = "block";
-	i = 0;
+	var i = 0;
 	interval = setInterval(function() {
 		placeMarker(list_of_list[i], function(marker) {
-			createMarkerList(marker, list_of_list.length);
+			createMarkerList(marker, list_of_list);
 		});
 		i++;
 		if(i > list_of_list.length - 1) {clearInterval(interval)}

@@ -36,11 +36,13 @@ function parse_full_JSON_object(events) {
 				var event_location = events["items"][i]["location"];
 				var start_time = events["items"][i]["start"]["dateTime"].substring(11, 16);
 				var end_time = events["items"][i]["end"]["dateTime"].substring(11, 16);
+				var event_id = events["items"][i]["id"];
 				var event_details = {};
 				event_details["name"] = event_name;
 				event_details["start"] = start_time;
 				event_details["end"] = end_time;
 				event_details["location"] = event_location;
+				event_details["id"] = event_id;
 				parsed_event_dict_list.push(event_details);
 			}
 		}
