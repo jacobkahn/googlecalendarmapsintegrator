@@ -45,7 +45,7 @@ function placeMarker(singleEvent, callback) {
 							calendarData[i][2] = newLocation;
 						}
 					}
-					buildMap(calendarData);
+					updatePageWithCalendarData(calendarData);
 				}
 				else {
                     console.log('Geocode was not successful for the following reason: ' + status);
