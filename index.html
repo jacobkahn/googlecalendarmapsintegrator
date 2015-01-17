@@ -94,8 +94,10 @@
 						data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/calendar">
 					  </span>
 					</span>
-					<fb:login-button scope="public_profile,email,user_events" onlogin="checkLoginState();"autologoutlink="true">
+					<span id="fbsignin">
+					<fb:login-button scope="public_profile,email,user_events" onlogin="checkLoginState();" autologoutlink="false">
 </fb:login-button>
+					</span>
 					<!--
 					<div id="uploadTag" style="margin-top: 30px">
 						<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">

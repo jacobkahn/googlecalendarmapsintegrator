@@ -32,7 +32,7 @@ function populateTime() {
 	document.getElementById("day").innerHTML = dayS;
 }
 
-function toggleCheckBox(id, data) {
+function toggleCheckBox(id) {
     "use strict";
 	console.log("Toggling event tag: #" + id);
 	var toggle = document.getElementById(id).checked;
@@ -85,6 +85,7 @@ function handleData(events) {
 
 function updatePageWithCalendarData(data) {
     "use strict";
+	console.log("Facebook event data");
 	for (var i = 0; i < data.length; i++) {
 		calendarData.push(data[i]);
 	}
@@ -108,13 +109,13 @@ function populateTags(details) {
 		var time = details[i][3], name = details[i][1], check = parseInt(time.substring(0, 2)), tagname = eventnumber;
 		if (check < 8) {
 			var misc = " AM";
-			c1tag = c1tag + "<li style=\"cursor: pointer\" onclick=\"toggleCheckBox(\'" + tagname + "\', \'calendarData\')\"><input type=\"checkbox\" id=\"" + tagname + "\" style=\"float: left\" checked=\"checked\"><a>" + name + "</a><span id=\"timeStamp\">" + time + misc + "</span></li>";
+			c1tag = c1tag + "<li style=\"cursor: pointer\" onclick=\"toggleCheckBox(\'" + tagname + "\')\"><input type=\"checkbox\" id=\"" + tagname + "\" style=\"float: left\" checked=\"checked\"><a>" + name + "</a><span id=\"timeStamp\">" + time + misc + "</span></li>";
 		} else if ((check >= 8) && (check < 16)) {
 			var misc = " PM";
-			c2tag = c2tag + "<li style=\"cursor: pointer\" onclick=\"toggleCheckBox(\'" + tagname + "\', \'calendarData\')\"><input type=\"checkbox\" id=\"" + tagname + "\" style=\"float: left\" checked=\"checked\"><a>" + name + "</a><span id=\"timeStamp\">" + time + misc + "</span></li>";
+			c2tag = c2tag + "<li style=\"cursor: pointer\" onclick=\"toggleCheckBox(\'" + tagname + "\')\"><input type=\"checkbox\" id=\"" + tagname + "\" style=\"float: left\" checked=\"checked\"><a>" + name + "</a><span id=\"timeStamp\">" + time + misc + "</span></li>";
 		} else if(check >= 16) {
 			var misc = " PM";
-			c3tag = c3tag + "<li style=\"cursor: pointer\" onclick=\"toggleCheckBox(\'" + tagname + "\', \'calendarData\')\"><input type=\"checkbox\" id=\"" + tagname + "\" style=\"float: left\" checked=\"checked\"><a>" + name + "</a><span id=\"timeStamp\">" + time + misc + "</span></li>";
+			c3tag = c3tag + "<li style=\"cursor: pointer\" onclick=\"toggleCheckBox(\'" + tagname + "\')\"><input type=\"checkbox\" id=\"" + tagname + "\" style=\"float: left\" checked=\"checked\"><a>" + name + "</a><span id=\"timeStamp\">" + time + misc + "</span></li>";
 		}
 		eventnumber += 1;
 	}
