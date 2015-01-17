@@ -85,7 +85,7 @@ function getEvents()
         }
 		var count = 1;
         //sort the events by starting time
-        fb_events.sort(sort_by(3, true, primerFunction));
+        fb_events.sort(sort_by(3, false, primerFunction));
         var date_now = new Date(2015, 1, 16, 1,1,1,1);
         var date_now_date = String(date_now.getDate());
         var date_now_month = String(date_now.getMonth());
