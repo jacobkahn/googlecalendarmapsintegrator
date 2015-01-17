@@ -39,7 +39,7 @@ function placeMarker(singleEvent, callback) {
                     console.log("OVER QUERY LIMIT - you clicked too fast.");
                 } else if (status === google.maps.GeocoderStatus.ZERO_RESULTS) {
 					var newLocation = prompt("Your event: \""+singleEvent[1]+ "\" has a location that isn't accurate enough. Please fill in a complete address.\n Current location: \""+my_address+"\"","House #, Street, Town, State/Province, Zip Code, Country");
-					event_id = singleEvent[5];
+					var event_id = singleEvent[5];
 					for(var i =0; i < calendarData.length; i++){
 						if(calendarData[i][5] === event_id) {
 							calendarData[i][2] = newLocation;
