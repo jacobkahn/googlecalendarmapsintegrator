@@ -85,7 +85,7 @@ function handleData(events) {
 
 function updatePageWithCalendarData(data) {
     "use strict";
-	console.log("Facebook event data");
+	calendarData = [];
 	for (var i = 0; i < data.length; i++) {
 		calendarData.push(data[i]);
 	}

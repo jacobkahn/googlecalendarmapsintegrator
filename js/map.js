@@ -40,12 +40,13 @@ function placeMarker(singleEvent, callback) {
                 } else if (status === google.maps.GeocoderStatus.ZERO_RESULTS) {
 					var newLocation = prompt("Your event: \""+singleEvent[1]+ "\" has a location that isn't accurate enough. Please fill in a complete address.\n Current location: \""+my_address+"\"","House #, Street, Town, State/Province, Zip Code, Country");
 					var event_id = singleEvent[5];
-					for(var i =0; i < calendarData.length; i++){
-						if(calendarData[i][5] === event_id) {
-							calendarData[i][2] = newLocation;
+					var data = calendarData;
+					for(var i =0; i < data.length; i++){
+						if(data[i][5] === event_id) {
+							data[i][2] = newLocation;
 						}
 					}
-					updatePageWithCalendarData(calendarData);
+					updatePageWithCalendarData(data);
 				}
 				else {
                     console.log('Geocode was not successful for the following reason: ' + status);
