@@ -993,6 +993,36 @@
 	text-decoration:none;
 	text-shadow:0px 1px 0px #854629;
 }
+
+	#warnings {
+		display: none;
+		width: 80%;
+		margin: auto;
+		margin-top: 10px;
+	}
+	#warningtext {
+		font-size: 0.7em;
+	}
+	#alert {
+		color: #FF5500;
+	}
+	#reschedule{
+		display: none;
+	}
+	#reschedule {
+		width: 30%;
+		margin: auto;
+		overflow: hidden;
+	}
+	#formValueId {
+		display: inline;
+		overflow: hidden;
+	}
+	#changeTime {
+		display: inline-block;
+		margin: auto;
+	}
+
 .revokeButton:hover {
 	background-color:#bc3315;
 }

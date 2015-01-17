@@ -83,8 +83,7 @@
 						<input id="choosedate" placeholder="Select date..."></input>
 					</form>
 					<h3>Start using Calendar Mapper!</h3>
-					<p>Sign in with your Google account</p>
-					<p onclick="toggle_visibility();"></p>
+					<p>Sign in with your Google or Facebook account</p>
 					<span id="signinButton">
 					  <span
 						class="g-signin"
@@ -95,6 +94,8 @@
 						data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/calendar">
 					  </span>
 					</span>
+					<fb:login-button scope="public_profile,email,user_events" onlogin="checkLoginState();"autologoutlink="true">
+</fb:login-button>
 					<!--
 					<div id="uploadTag" style="margin-top: 30px">
 						<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
@@ -176,6 +177,9 @@
 						<!-- map goes here? -->
 					</div>
 				</div>
+				<div id="warnings">
+					<h3 id="warningtext"></h3>
+				</div>
 				<div id="revokeButtonTag" style="margin-top: 30px">
 						<a href="index.html" id="revokeButton" class="revokeButton">Sign in with another account</a>
 				</div>
@@ -215,7 +219,9 @@ Para-para-paradise
 	   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 	 })();
 	</script>
-		
+	<!-- Parser: Facebook events -->
+	<script src="js/facebookparser.js" type="text/javascript"></script>
+
 	<!-- Parser: function; extract calendar name -->
 	<script src="parsers/entry_lookup.js" type="text/javascript"></script>
 		

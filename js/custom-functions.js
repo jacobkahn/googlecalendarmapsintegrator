@@ -53,6 +53,12 @@ function toggle_mainmapper(data) {
 	buildMap(data);
 }
 
+function toSeconds(time) {
+	var output = 0;
+	output += ((parseInt(time.substring(5, 3)) * 60) + (parseInt(time.substring(0,2)) * 3600));
+	return(output);
+}
+
 function toggle_noevents() {
     "use strict";
 	window.scroll(0, 700);
@@ -93,6 +99,7 @@ function updatePageWithCalendarData(data) {
 
 var eventnumber = 1;
 function populateTags(details) {
+	eventnumber = 1;
     "use strict";
 	var c1tag="";
     var c2tag="";
