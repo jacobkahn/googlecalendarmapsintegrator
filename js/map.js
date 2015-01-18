@@ -86,6 +86,7 @@ function calcRoute(inputmarkers, events) {
     };
     directionsService.route(request, function (response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
+			renderer.setDirections(response);
 			var tripLegs = response.routes[0].legs;
 			document.getElementById("warnings").style.display = "none";
 			var dynamictag = "";

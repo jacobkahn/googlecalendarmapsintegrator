@@ -12,11 +12,11 @@
         {
             st.markers.addGoogleMarker(list_of_markers[i]);
         }
+		console.log(list_of_markers);
+
         // render route based on Google Maps 
         st.route.setRenderer(renderer);
         st.event.addListener('onurlprepared', function(url){
-            staticMap.src = url;
-            console.log("Static Image URL: "+ url);
             encodedImageUrl(url);
         });
         st.prepareUrl();

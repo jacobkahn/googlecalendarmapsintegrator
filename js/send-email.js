@@ -10,7 +10,7 @@ var m = new mandrill.Mandrill('lvh8hM4-xC_Yh4OiVaLUXg');
 var url = "";
 
 function encodedImageUrl(eurl) {
-	console.log("Image URL: "+eurl);
+	console.log("Static Image URL: "+eurl);
 	url += eurl;
 }
 
