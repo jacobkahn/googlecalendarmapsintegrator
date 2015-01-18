@@ -49,6 +49,7 @@ function toggle_mainmapper(data) {
 	$("#initial").fadeOut("slow", function () {
 		$("#mapper").fadeIn("slow", function () {});
 		$("#revokeButtonTag").fadeIn("slow", function () {});
+		$("travelmode").fadeIn("slow", function() {});
 	});
 	document.getElementById("map-canvas").style.height = "350px";
 	document.getElementById("directions-panel").style.height = "350px";
