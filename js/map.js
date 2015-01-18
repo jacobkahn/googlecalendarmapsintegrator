@@ -86,7 +86,6 @@ function calcRoute(inputmarkers, events) {
     };
     directionsService.route(request, function (response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
-			renderer.setDirections(response);
 			var tripLegs = response.routes[0].legs;
 			document.getElementById("warnings").style.display = "none";
 			var dynamictag = "";
@@ -100,10 +99,9 @@ function calcRoute(inputmarkers, events) {
 						document.getElementById("warnings").innerHTML = dynamictag;
 					}
 				}
-			}
-			console.log("Static map updating...");
-			updateStaticMap();
+			}			
             console.log("Directions engine OK!");
+			console.log(response);
             console.log("---------------------");
             directionsDisplay.setDirections(response);
             document.getElementById("loading").style.display = "none";
@@ -118,6 +116,7 @@ function createMarkerList(m, events) {
     list_of_markers.push(m);
     if (list_of_markers[events.length - 1] !== undefined) {
         console.log('Async load complete.');
+		hereComeTheMarkers(list_of_markers, map.getZoom());
         calcRoute(list_of_markers, events);
     }
 }

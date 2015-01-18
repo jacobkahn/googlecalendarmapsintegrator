@@ -30,6 +30,7 @@
     }
 
     function convertImgToBase64URL(url, callback, outputFormat){
+		console.log("Encoding image to Base64...");
         var canvas = document.createElement('CANVAS'),
             ctx = canvas.getContext('2d'),
             img = new Image;
