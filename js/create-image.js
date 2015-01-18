@@ -1,7 +1,22 @@
     function createimage(locs,t_zoom)
     {
-        var counter = 1;
-        var url = "http://maps.google.com/maps/api/staticmap?center="+String((locs[0].lat()))+","+String((locs[0].lng()))+"&zoom="+t_zoom+"&size=600x400&maptype=roadmap";
+		var counter = 1;
+        var cen_lat = 0;
+        var cen_lng = 0;
+        var lat_max = 0;
+        var lat_min = 200;
+        var lng_max = 0;
+        var lng_min = 200;
+        for (var i = 0; i<locs.length; i++)
+        {
+            if (loc[i].lat > lat_max) {lat_max = loc[i].lat;}
+            if (loc[i].lat < lat_min) {lat_min = loc[i].lat;}
+            if (loc[i].lng > lng_max) {lng_max = loc[i].lng;}
+            if (loc[i].lng < lng_min) {lng_min = loc[i].lng;}
+        }
+        cen_lat = (lat_max + lat_min) / 2;
+        cen_lng = (lng_max + lng_min) / 2;
+        var url = "http://maps.google.com/maps/api/staticmap?center="+String(cen_lat)+","+String(cen_lng)+"&zoom="+t_zoom+"&size=600x400&maptype=roadmap";
         var i = 0;
         while (i < locs.length)
         {
@@ -18,8 +33,8 @@
         var canvas = document.createElement('CANVAS'),
             ctx = canvas.getContext('2d'),
             img = new Image;
-        img.crossOrigin = 'Anonymous';
-        img.onload = function(){
+        	img.crossOrigin = 'Anonymous';
+        	img.onload = function(){
             var dataURL;
             canvas.height = img.height;
             canvas.width = img.width;
