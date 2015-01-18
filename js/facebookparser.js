@@ -19,8 +19,16 @@ function checkLoginState() {
 }
 
 window.fbAsyncInit = function() {
-	FB.init({
-	  appId      : '523986691076314',
+	var theEnv = location.hostname;
+  if (theEnv == "calendarmapper.me") {
+    envAppId = "523986691076314";
+  } else if (theEnv == "scoutify.me") {
+    envAppId = "775398365873272";
+  } else {
+    envAppId = "523989121076071";
+  };
+  FB.init({
+	  appId      : envAppId,
 	  cookie     : true,  // enable cookies to allow the server to access 
 						  // the session
 	  xfbml      : true,  // parse social plugins on this page
