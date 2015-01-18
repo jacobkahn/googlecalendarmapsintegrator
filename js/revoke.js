@@ -1,6 +1,9 @@
 function disconnectUser(access_token) {
     "use strict";
     gapi.auth.signOut();
+	FB.logout(function(response) {
+        // Person is now logged out
+    });
     var revokeUrl = 'https://accounts.google.com/o/oauth2/revoke?token=' + access_token;
 
     // Perform an asynchronous GET request.
