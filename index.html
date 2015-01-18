@@ -81,26 +81,30 @@
 				</div>
 
 				<footer class="major container small">
-					<form>
-						<h3>Select the date you want to plan:</h3>
-						<input id="choosedate" placeholder="Select date..."></input>
-					</form>
-					<h3>Start using Scoutify!</h3>
-					<p>Sign in with your Google or Facebook account</p>
-					<span id="signinButton">
-					  <span
-						class="g-signin"
-						data-callback="signinCallback"
-						data-clientid="84849743151-9hcdgmrt421ffiarpn9v77jcrcnp4kn9.apps.googleusercontent.com"
-						data-cookiepolicy="single_host_origin"
-						data-requestvisibleactions="http://schema.org/AddAction"
-						data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/calendar">
-					  </span>
-					</span>
-					<span id="fbsignin">
-					<fb:login-button size="large" scope="public_profile,email,user_events" onlogin="checkLoginState();" autologoutlink="false">
-</fb:login-button>
-					</span>
+					<div>
+						<form>
+							<h3>Select the date you want to plan:</h3>
+							<input id="choosedate" placeholder="Select date..."></input>
+						</form>
+						<h3>Start using Scoutify!</h3>
+						<p>Sign in with your Google or Facebook account</p>
+						<span id="signinButton">
+						  <span
+							class="g-signin"
+							data-callback="signinCallback"
+							data-clientid="84849743151-9hcdgmrt421ffiarpn9v77jcrcnp4kn9.apps.googleusercontent.com"
+							data-cookiepolicy="single_host_origin"
+							data-requestvisibleactions="http://schema.org/AddAction"
+							data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/calendar">
+						  </span>
+						</span>
+					</div>
+					<div id="fb">
+						<span id="fbsignin">
+						<fb:login-button size="xlarge" scope="public_profile,email,user_events" onlogin="checkLoginState();" autologoutlink="false">
+						</fb:login-button>
+						</span>
+					</div>
 					<!--
 					<div id="uploadTag" style="margin-top: 30px">
 						<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">

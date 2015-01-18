@@ -180,8 +180,6 @@
 					margin-bottom: 1em;
 				}
 
-    #signinButton {
-    }
 	footer {
 		text-align: center;
 	}
@@ -1322,6 +1320,10 @@ span.trans
 #mainmapper{
 	margin: 0 auto;
 	width: 80%;
+}
+#fb {
+	display: block;
+	overflow: hidden;
 }
 #map-canvas{
 	margin: 0 auto;
