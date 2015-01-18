@@ -24,6 +24,7 @@
 		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+		<script src="js/create-image.js" type="text/javascript"></script>
         <script>
         $(document).ready(function() {
           $("#choosedate").datepicker();
@@ -100,7 +101,6 @@
 					<fb:login-button size="xlarge" scope="public_profile,email,user_events" onlogin="checkLoginState();" autologoutlink="false">
 </fb:login-button>
 					</span>
-					<input type="submit" value="Email data summary" onclick="sendTheMail(); return false;"></input>
 					<!--
 					<div id="uploadTag" style="margin-top: 30px">
 						<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
@@ -179,13 +179,14 @@
 						<!-- my cool panel goes here -->
 					</div>
 						<div id="map-canvas">
-							<!-- map goes here? -->
+							<!-- map goes here -->
 						</div>
 				</div>
 				<div id="warnings">
 					<h3 id="warningtext"></h3>
 				</div>
 				<div id="revokeButtonTag" style="margin-top: 30px">
+						<input id="email" type="submit" value="Email data summary" onclick="sendTheMail(); return false;"></input>
 						<a href="index.html" id="revokeButton" class="revokeButton">Sign in with another account</a>
 				</div>
 				<div id="loading" class="modal"></div>
