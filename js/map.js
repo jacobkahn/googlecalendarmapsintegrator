@@ -101,9 +101,7 @@ function calcRoute(inputmarkers, events) {
 				}
 			}			
             console.log("Directions engine OK!");
-			console.log(response);
-            console.log("Parsed response");
-            console.log(parseHTML(response));
+            addDirections(parseHTML(response));
             console.log("---------------------");
             directionsDisplay.setDirections(response);
             document.getElementById("loading").style.display = "none";
