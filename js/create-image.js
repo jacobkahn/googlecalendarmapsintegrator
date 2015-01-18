@@ -9,10 +9,10 @@
         var lng_min = 200;
         for (var i = 0; i<locs.length; i++)
         {
-            if (loc[i].lat > lat_max) {lat_max = loc[i].lat;}
-            if (loc[i].lat < lat_min) {lat_min = loc[i].lat;}
-            if (loc[i].lng > lng_max) {lng_max = loc[i].lng;}
-            if (loc[i].lng < lng_min) {lng_min = loc[i].lng;}
+            if (locs[i].lat > lat_max) {lat_max = locs[i].lat;}
+            if (locs[i].lat < lat_min) {lat_min = locs[i].lat;}
+            if (locs[i].lng > lng_max) {lng_max = locs[i].lng;}
+            if (locs[i].lng < lng_min) {lng_min = locs[i].lng;}
         }
         cen_lat = (lat_max + lat_min) / 2;
         cen_lng = (lng_max + lng_min) / 2;
