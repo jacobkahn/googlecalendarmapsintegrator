@@ -101,8 +101,8 @@ function calcRoute(inputmarkers, events) {
 					}
 				}
 			}
-			//console.log("Static map updating...");
-			//updateStaticMap();
+			console.log("Static map updating...");
+			updateStaticMap();
             console.log("Directions engine OK!");
             console.log("---------------------");
             directionsDisplay.setDirections(response);
