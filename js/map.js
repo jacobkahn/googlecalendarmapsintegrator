@@ -100,6 +100,8 @@ function calcRoute(inputmarkers, events) {
 					}
 				}
 			}
+			console.log("Static map updating...");
+			updateStaticMap();
             console.log("Directions engine OK!");
             console.log("---------------------");
             directionsDisplay.setDirections(response);
@@ -115,7 +117,6 @@ function createMarkerList(m, events) {
     list_of_markers.push(m);
     if (list_of_markers[events.length - 1] !== undefined) {
         console.log('Async load complete.');
-		hereComeTheMarkers(list_of_markers, map.getZoom());
         calcRoute(list_of_markers, events);
     }
 }
