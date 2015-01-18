@@ -39,19 +39,9 @@ function placeMarker(singleEvent, callback) {
                     console.log("OVER QUERY LIMIT - you clicked too fast.");
                 } else if (status === google.maps.GeocoderStatus.ZERO_RESULTS) {
                     var event_id = singleEvent[5];
-                    var newLocation = prompt("Your event: \""+singleEvent[1]+ "\" has a location that isn't accurate enough. Please fill in a complete address.\n Current location: \""+my_address+"\"","House #, Street, Town, State/Province, Zip Code, Country");
-					if(newLocation === null)  {
-                        newLocation = my_address;
-                        toggleCheckBox(event_id);
-						buildMap(calendarData);
-                    }
-                    var data = calendarData;
-					for(var i = 0; i < data.length; i++) {
-						if(data[i][5] === event_id) {
-							data[i][2] = newLocation;
-						}
-					}
-					updatePageWithCalendarData(data);
+                    confirm("Your event: \""+singleEvent[1]+ "\" has a location that isn't accurate enough. Please fill in a complete address.\n Current location: \""+my_address+"\""+"\n Event link: https://www.google.com/calendar/event?eid={"+event_id+"}");
+					toggleCheckBox(event_id);
+					buildMap(calendarData);
 				}
 				else {
                     console.log('Geocode was not successful for the following reason: ' + status);
