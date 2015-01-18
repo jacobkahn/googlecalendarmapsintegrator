@@ -50,6 +50,7 @@ function toggle_mainmapper(data) {
 	});
 	document.getElementById("map-canvas").style.height = "350px";
 	document.getElementById("directions-panel").style.height = "350px";
+	console.log("print 3: "+data[3][2]);
 	buildMap(data);
 }
 
@@ -85,12 +86,12 @@ function handleData(events) {
 
 function updatePageWithCalendarData(data) {
     "use strict";
-	calendarData = [];
 	for (var i = 0; i < data.length; i++) {
-		calendarData.push(data[i]);
+		calendarData[i] = data[i];
 	}
 	populateTags(calendarData);
 	if (calendarData.length > 0) {
+		console.log("Print 2: "+ calendarData[3][2]);
 		toggle_mainmapper(calendarData);
 	} else {
         console.log("No events!");
@@ -98,15 +99,15 @@ function updatePageWithCalendarData(data) {
 	}
 }
 
-var eventnumber = 1;
+//var eventnumber = 1;
 function populateTags(details) {
-	eventnumber = 1;
+	//eventnumber = 1;
     "use strict";
 	var c1tag="";
     var c2tag="";
     var c3tag="";
 	for (var i = 0; i < details.length; i++) {
-		var time = details[i][3], name = details[i][1], check = parseInt(time.substring(0, 2)), tagname = eventnumber;
+		var time = details[i][3], name = details[i][1], check = parseInt(time.substring(0, 2)), tagname = details[i][5];
 		if (check < 8) {
 			var misc = " AM";
 			c1tag = c1tag + "<li style=\"cursor: pointer\" onclick=\"toggleCheckBox(\'" + tagname + "\')\"><input type=\"checkbox\" id=\"" + tagname + "\" style=\"float: left\" checked=\"checked\"><a>" + name + "</a><span id=\"timeStamp\">" + time + misc + "</span></li>";
@@ -117,7 +118,7 @@ function populateTags(details) {
 			var misc = " PM";
 			c3tag = c3tag + "<li style=\"cursor: pointer\" onclick=\"toggleCheckBox(\'" + tagname + "\')\"><input type=\"checkbox\" id=\"" + tagname + "\" style=\"float: left\" checked=\"checked\"><a>" + name + "</a><span id=\"timeStamp\">" + time + misc + "</span></li>";
 		}
-		eventnumber += 1;
+		//eventnumber += 1;
 	}
 	document.getElementById("c1").innerHTML = c1tag;
 	document.getElementById("c2").innerHTML = c2tag;

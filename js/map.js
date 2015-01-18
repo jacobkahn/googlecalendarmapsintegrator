@@ -10,6 +10,7 @@ var optimize = false;
 
 function placeMarker(singleEvent, callback) {
     "use strict";
+    console.log("print 9999: "+singleEvent[2]);
     var my_address = singleEvent[2];
     var my_rank = String.fromCharCode(singleEvent[0] + 64);
     if (my_rank !== undefined) {
@@ -38,14 +39,19 @@ function placeMarker(singleEvent, callback) {
                 } else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
                     console.log("OVER QUERY LIMIT - you clicked too fast.");
                 } else if (status === google.maps.GeocoderStatus.ZERO_RESULTS) {
-					var newLocation = prompt("Your event: \""+singleEvent[1]+ "\" has a location that isn't accurate enough. Please fill in a complete address.\n Current location: \""+my_address+"\"","House #, Street, Town, State/Province, Zip Code, Country");
-					var event_id = singleEvent[5];
-					var data = calendarData;
+                    var event_id = singleEvent[5];
+                    var newLocation = prompt("Your event: \""+singleEvent[1]+ "\" has a location that isn't accurate enough. Please fill in a complete address.\n Current location: \""+my_address+"\"","House #, Street, Town, State/Province, Zip Code, Country");
+					if(newLocation === undefined)  {
+                        newLocation = my_address;
+                        toggleCheckBox(event_id);
+                    }
+                    var data = calendarData;
 					for(var i =0; i < data.length; i++){
 						if(data[i][5] === event_id) {
 							data[i][2] = newLocation;
 						}
 					}
+                    console.log("Print 1: "+ data[3][2]);
 					updatePageWithCalendarData(data);
 				}
 				else {
@@ -76,6 +82,7 @@ function toggleOptimize() {
 
 function calcRoute(inputmarkers, events) {
     "use strict";
+    console.log("print 6: "+events[3][2]);
     console.log("Calculating " + inputmarkers.length + " routes...");
     var wpts = [];
     for (var i = 1; i < inputmarkers.length - 1; i++) {
@@ -127,6 +134,7 @@ function createMarkerList(m, events) {
 
 function buildMap(input) 
 {
+    console.log("print 4: "+input[3][2]);
 	if(input == undefined || directionsDisplay == undefined) {
 		setTimeout(function () {}, 100);
 	}
@@ -144,10 +152,11 @@ function buildMap(input)
 	console.log("Building map...");
 	var list_of_list = new Array();
 	for(i=0; i<input.length; i++){
-		if(document.getElementById(i+1).checked) {
+		if(document.getElementById(input[i][5]).checked) {
 			list_of_list.push(input[i]);	
 		}
 	}
+    console.log("print 5: "+list_of_list[3][2]);
 	var marker_list = [];
 	directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
 	var mapOptions = 
@@ -165,6 +174,7 @@ function buildMap(input)
 	var i = 0;
 	interval = setInterval(function() {
 		placeMarker(list_of_list[i], function(marker) {
+            console.log("print 3: "+list_of_list[3][2]);
 			createMarkerList(marker, list_of_list);
 		});
 		i++;
