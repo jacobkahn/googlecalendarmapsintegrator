@@ -52,7 +52,7 @@ function toggle_mainmapper(data) {
 	});
 	document.getElementById("map-canvas").style.height = "350px";
 	document.getElementById("directions-panel").style.height = "350px";
-	document.getElementById("mainmapper").style.minHeight = "620px";
+	document.getElementById("mainmapper").style.minHeight = "540px";
 	document.getElementById("travelmode").style.display = "block";
 	buildMap(data);
 }
