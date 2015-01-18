@@ -3,8 +3,9 @@ function statusChangeCallback(response) {
     // Logged into your app and Facebook.
 	facebook = true;
 	FB.api('/me?scope=email', function(apiResponse) { 
-		console.log("LLAKFMLAKDMFALDKMFA");
-		console.log(apiResponse);
+		user_email = apiResponse['email'];
+		var first_name = apiResponse['first_name'];
+		var last_name = apiResponse['last_name'];
 	});
     getEvents();
   } else if (response.status === 'not_authorized') {
