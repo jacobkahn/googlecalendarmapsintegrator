@@ -133,6 +133,8 @@ function buildMap(input)
 		}
 		list_of_markers = new Array();
 	}
+	document.getElementById("email").setAttribute("value","Send Email");
+	document.getElementById("email").setAttribute("onclick","sendTheMail()");
 	if(directionsDisplay != undefined) {
 		directionsDisplay.setMap(null);
 		directionsDisplay.setPanel(null);
