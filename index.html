@@ -252,6 +252,7 @@ Para-para-paradise
 		function signinCallback(authResult) {
 			if (authResult['status']['signed_in']) {
 				console.log('User signed in...processing data.');
+				gmail = true;
 			    gapi.auth.getToken();
 				var calendarName = gapi.client.request({path:"calendar/v3/users/me/calendarList", method: "GET", callback: function (calendarList) {    
 					// Even smarter HTTP GET request!

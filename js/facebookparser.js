@@ -1,6 +1,7 @@
 function statusChangeCallback(response) {
   if (response.status === 'connected') {
     // Logged into your app and Facebook.
+	facebook = true;
     getEvents();
   } else if (response.status === 'not_authorized') {
     // The person is logged into Facebook, but not your app.

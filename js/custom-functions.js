@@ -2,6 +2,8 @@
 /*jslint plusplus: true */
 
 var calendarData = [];
+var gmail = false;
+var facebook = false;
 
 function populateTime() {
     "use strict";

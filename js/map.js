@@ -39,7 +39,7 @@ function placeMarker(singleEvent, callback) {
                     console.log("OVER QUERY LIMIT - you clicked too fast.");
                 } else if (status === google.maps.GeocoderStatus.ZERO_RESULTS) {
                     var event_id = singleEvent[5];
-                    confirm("Your event: \""+singleEvent[1]+ "\" has a location that isn't accurate enough. Please fill in a complete address.\n Current location: \""+my_address+"\""+"\n Event link: https://www.google.com/calendar/event?eid={"+event_id+"}");
+                    confirm("Your event: \""+singleEvent[1]+ "\" has a location that isn't accurate enough. Please fill in a complete address.\nCurrent location: \""+my_address+"\""+"\n\nEvent link (copy in browser):\n https://www.google.com/calendar/event?eid="+event_id+"&ctz=America/Los_Angeles");
 					toggleCheckBox(event_id);
 					buildMap(calendarData);
 				}
