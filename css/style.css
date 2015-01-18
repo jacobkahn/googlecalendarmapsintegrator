@@ -1434,9 +1434,10 @@ span.trans
 	display: none;
 }
 #mainmapper {
+	overflow: auto;
 	margin: 0 auto;
 	width: 80%;
-	min-height: 680px;
+	min-height: 700px;
 }
 #fb {
 	display: block;
