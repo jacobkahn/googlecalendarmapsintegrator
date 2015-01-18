@@ -71,6 +71,7 @@ function toggleOptimize() {
 
 function calcRoute(inputmarkers, events) {
     "use strict";
+	var selectedMode = document.getElementById('mode').value;
     console.log("Calculating " + inputmarkers.length + " routes...");
     var wpts = [];
     for (var i = 1; i < inputmarkers.length - 1; i++) {
@@ -82,7 +83,7 @@ function calcRoute(inputmarkers, events) {
         destination: end,
         waypoints: wpts,
         optimizeWaypoints: optimize,
-        travelMode: google.maps.TravelMode.DRIVING
+        travelMode: google.maps.TravelMode[selectedMode]
     };
     directionsService.route(request, function (response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
