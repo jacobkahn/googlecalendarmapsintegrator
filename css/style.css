@@ -1430,7 +1430,10 @@ span.trans
 	color: #e8603c;
 	font-size:1.3em;
 }
-#mainmapper{
+#travelmode {
+	display: none;
+}
+#mainmapper {
 	margin: 0 auto;
 	width: 80%;
 	min-height: 680px;
