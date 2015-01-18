@@ -50,7 +50,6 @@ function toggle_mainmapper(data) {
 	});
 	document.getElementById("map-canvas").style.height = "350px";
 	document.getElementById("directions-panel").style.height = "350px";
-	console.log("print 3: "+data[3][2]);
 	buildMap(data);
 }
 
@@ -91,7 +90,6 @@ function updatePageWithCalendarData(data) {
 	}
 	populateTags(calendarData);
 	if (calendarData.length > 0) {
-		console.log("Print 2: "+ calendarData[3][2]);
 		toggle_mainmapper(calendarData);
 	} else {
         console.log("No events!");
