@@ -45,7 +45,7 @@ function placeMarker(singleEvent, callback) {
                         toggleCheckBox(event_id);
                     }
                     var data = calendarData;
-					for(var i =0; i < data.length; i++){
+					for(var i = 0; i < data.length; i++) {
 						if(data[i][5] === event_id) {
 							data[i][2] = newLocation;
 						}
@@ -56,7 +56,7 @@ function placeMarker(singleEvent, callback) {
                     console.log('Geocode was not successful for the following reason: ' + status);
                 }
             }
-            );
+        );
     }
 }
 
@@ -106,7 +106,6 @@ function calcRoute(inputmarkers, events) {
 						document.getElementById("warnings").style.display = "block";
 						dynamictag += "<h3><strong id=\"alert\">WARNING: </strong> Based on current traffic data, your event \""+events[i][1]+"\" can't be reached in time after \""+events[i+1][1]+"\" -- Traffic data by Google</h3>"
 						document.getElementById("warnings").innerHTML = dynamictag;
-						//document.getElementById("warningtext").innerHTML = "<strong id=\"alert\">WARNING: </strong> Based on current traffic data, your event \""+events[i][1]+"\" can't be reached in time after \""+events[i+1][1]+"\" -- Traffic data by Google";
 					}
 				}
 			}
@@ -168,6 +167,7 @@ function buildMap(input)
 	console.log("Geocoder powering up...");
 	document.getElementById("loading").style.display = "block";
 	var i = 0;
+	console.log(list_of_list);
 	interval = setInterval(function() {
 		placeMarker(list_of_list[i], function(marker) {
 			createMarkerList(marker, list_of_list);
