@@ -43,6 +43,7 @@ function placeMarker(singleEvent, callback) {
 					if(newLocation === null)  {
                         newLocation = my_address;
                         toggleCheckBox(event_id);
+						buildMap(calendarData);
                     }
                     var data = calendarData;
 					for(var i = 0; i < data.length; i++) {
