@@ -37,6 +37,7 @@ function placeMarker(singleEvent, callback) {
                     callback(marker);
                 } else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
                     console.log("OVER QUERY LIMIT - you clicked too fast.");
+                    window.location.reload();
                 } else if (status === google.maps.GeocoderStatus.ZERO_RESULTS) {
                     var event_id = singleEvent[5];
                     confirm("Your event: \""+singleEvent[1]+ "\" has a location that isn't accurate enough. Please fill in a complete address.\nCurrent location: \""+my_address+"\""+"\n\nMake sure you refresh the page once you've edited your event! \U+2603");
