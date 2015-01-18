@@ -110,7 +110,10 @@ function populateTags(details) {
 			var misc = " AM";
 			c1tag = c1tag + "<li style=\"cursor: pointer\" onclick=\"toggleCheckBox(\'" + tagname + "\')\"><input type=\"checkbox\" id=\"" + tagname + "\" style=\"float: left\" checked=\"checked\"><a>" + name + "</a><span id=\"timeStamp\">" + time + misc + "</span></li>";
 		} else if ((check >= 8) && (check < 16)) {
-			var misc = " PM";
+			if(check < 12) 
+				var misc = " AM";
+			else
+				var misc = " PM";
 			c2tag = c2tag + "<li style=\"cursor: pointer\" onclick=\"toggleCheckBox(\'" + tagname + "\')\"><input type=\"checkbox\" id=\"" + tagname + "\" style=\"float: left\" checked=\"checked\"><a>" + name + "</a><span id=\"timeStamp\">" + time + misc + "</span></li>";
 		} else if(check >= 16) {
 			var misc = " PM";

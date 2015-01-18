@@ -1,10 +1,7 @@
     function createimage(locs,t_zoom)
     {
         var counter = 1;
-        
-        //console.log(locs[0])
         var url = "http://maps.google.com/maps/api/staticmap?center="+String((locs[0].lat()))+","+String((locs[0].lng()))+"&zoom="+t_zoom+"&size=600x400&maptype=roadmap";
-        //var url = "http://maps.google.com/maps/api/staticmap?&zoom="+t_zoom+"&size=1400x1400&maptype=roadmap";
         var i = 0;
         while (i < locs.length)
         {
@@ -36,15 +33,13 @@
 
 
     function hereComeTheMarkers(markerList, zoomLevel) {
-        console.log(markerList);
-        console.log(zoomLevel);
         var locationList = [];
         for (var i = 0; i < markerList.length; i++)
         {
-            locationList[i] = markerList[i].getPosition();
+            locationList.push(markerList[i].getPosition());
         }
-        convertImgToBase64URL(createimage(locationList,3), function(base64Img){
-        console.log(base64Img);
+        convertImgToBase64URL(createimage(locationList, 5), function(base64Img){
+        	console.log(base64Img);
         });
     }
 
