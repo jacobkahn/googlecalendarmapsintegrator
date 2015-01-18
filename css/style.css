@@ -1434,7 +1434,6 @@ span.trans
 	display: none;
 }
 #mainmapper {
-	overflow: auto;
 	margin: 0 auto;
 	width: 80%;
 	min-height: 700px;
