@@ -1,4 +1,4 @@
-googlecalendarmapsintegrator
+scoutify.me – auxiliary code
 ============================
 
-Google Calendar Maps Integrator
+Auxiliary code for scoutify.me
